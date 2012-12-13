@@ -1,0 +1,11 @@
+
+$headerHeight: 50px;
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  height: $headerHeight;
+  background: #070707;
+  color: #EEE;
+}

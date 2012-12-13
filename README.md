@@ -1,7 +1,7 @@
-node-ninjapp-stub
+ninja-remote
 ================
 
-Node.js + Ninja Blocks application stub
+Ninja Blocks Remote
 
 ## License
 MIT

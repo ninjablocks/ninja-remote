@@ -11,10 +11,10 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , redisClient = require('redis-url').connect(process.env.REDISTOGO_URL)
-  , RedisStore = require('connect-redis')(express);
+  , RedisStore = require('connect-redis')(express)
+  , authom = require('authom');
 
 var app = express();
-var authom = require('authom');
 
 app.configure(function(){
   app.set('port', process.env.PORT || 8000);
@@ -37,6 +37,7 @@ app.configure(function(){
 });
 
 app.configure('development', function(){
+  redisClient.select(2);
   app.use(express.errorHandler());
 });
 

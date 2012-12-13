@@ -1,2 +1,3 @@
 *.coffee
 components/html5-mobile-boilerplate
+components/browser-ninja-blocks/example

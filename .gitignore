@@ -1,4 +1,4 @@
 node_modules/
 public/
-yeoman/temp/
-yeoman/dist/
+yeoman/temp/*
+yeoman/dist/*

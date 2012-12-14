@@ -12,6 +12,8 @@ yeomanApp.service('UIEvents', function() {
         PusherConfig:           'PusherConfig',
         PusherStream:           'PusherStream',
 
+        ConfigureMode:          'ConfigureMode',
+
         /**
          * User
          */
@@ -52,8 +54,7 @@ yeomanApp.service('UIEvents', function() {
         DeviceRemoved:          'DeviceRemoved',
         DeviceRemoveFailed:     'DeviceRemoveFailed',
 
-        // Device History
-        DeviceHistoryLoaded:    'DeviceHistoryLoaded',
+        SetDeviceType:          'SetDeviceType',
 
         ServiceUpdated:         'ServiceUpdated',
 

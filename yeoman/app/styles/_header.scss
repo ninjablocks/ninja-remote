@@ -8,4 +8,11 @@ header {
   height: $headerHeight;
   background: #070707;
   color: #EEE;
+
+  a.configure {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    color: white;
+  }
 }

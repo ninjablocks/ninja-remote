@@ -43,22 +43,42 @@
             <script src="scripts/vendor/json3.min.js"></script>
         <![endif]-->
         <header ng-controller="HeaderCtrl">
-            <h1>Ninja Remote</h1>
-            <a>Configure</a>
+            <h1 ng-click="setRoute('/')">Ninja Remote</h1>
+
+            <a ng-show="LocationIsHome() && !ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure</a>
+            <a ng-show="LocationIsHome() && ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Finish</a>
         </header>
 
         <!-- Add your site or application content here -->
-        <div class="container" ng-view></div>
+        <div class="wrapper">
+            <div class="container" ng-view></div>
+        </div>
 
+        <!-- Templates -->
+        
+        <script type="text/ng-template" src="views/main.html"></script>
+        <script type="text/ng-template" src="views/existingDevices.html"></script>
+        <script type="text/ng-template" src="views/selectButton.html"></script>
+        
+
+        <!-- 
         <script src="scripts/vendor/zepto.min.js"></script>
         <script src="scripts/helper.js"></script>
+         -->
         <script src="scripts/vendor/angular.js"></script>
 
         <!-- build:js scripts/scripts.js -->
         <script src="components/browser-ninja-blocks/lib/ninja.js"></script>
         <script src="scripts/app.js"></script>
+
+        <script src="scripts/factories/Button.js"></script>
+
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/controllers/debug.js"></script>
+        <script src="scripts/controllers/button.js"></script>
+        <script src="scripts/controllers/selectButton.js"></script>
+
         <script src="scripts/services/Config.js"></script>
         <script src="scripts/services/NinjaService.js"></script>
         <script src="scripts/services/NinjaUtilities.js"></script>
@@ -66,6 +86,10 @@
         <script src="scripts/services/PusherService.js"></script>
         <script src="scripts/services/UIEvents.js"></script>
         <script src="scripts/services/UserService.js"></script>
+        <script src="scripts/services/UserStore.js"></script>
+
+        <script src="scripts/controllers/existingDevices.js"></script>
+        <script src="scripts/services/NewButtonService.js"></script>
         <!-- endbuild -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

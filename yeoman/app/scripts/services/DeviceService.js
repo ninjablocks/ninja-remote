@@ -28,10 +28,9 @@ yeomanApp.service('DeviceService'
 		 */
 		LoadUserDevices: function(callback) {
 			console.log('LoadUserDevices');
+			NinjaService.User.GetDevices(this.SetUserDevices.bind(this));
 			if (callback) {
 				NinjaService.User.GetDevices(callback);
-			} else {
-				NinjaService.User.GetDevices(this.SetUserDevices.bind(this));
 			}
 		},
 
@@ -243,6 +242,31 @@ yeomanApp.service('DeviceService'
 				for(var i=0; i<devicesArray.length; i++) {
 					var device = devicesArray[i];
 					if (device.Options.type === type) {
+						devices.push(device);
+					}
+				}
+			}
+
+			return devices;
+		},
+
+
+		/**
+		 * Finds devices that are of the specified mode
+		 * @param {string} mode         actuator|sensor
+		 * @param {array} devicesArray Optional devices array to use
+		 */
+		GetDeviceByMode: function(mode, devicesArray) {
+			var devices = [];
+
+			if (!devicesArray) {
+				devicesArray = this.Devices;
+			}
+
+			if (devicesArray) {
+				for (var i=0; i<devicesArray.length; i++) {
+					var device = devicesArray[i];
+					if (device.Options.mode === mode) {
 						devices.push(device);
 					}
 				}

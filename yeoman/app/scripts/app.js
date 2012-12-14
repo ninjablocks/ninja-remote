@@ -7,6 +7,14 @@ var yeomanApp = angular.module('yeomanApp', [])
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/selectButton', {
+        templateUrl: 'views/selectButton.html',
+        controller: 'SelectButtonCtrl'
+      })
+      .when('/existingDevices', {
+        templateUrl: 'views/existingDevices.html',
+        controller: 'ExistingDevicesCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -15,12 +23,12 @@ var yeomanApp = angular.module('yeomanApp', [])
     $locationProvider.html5Mode(false);
   }]);
 
-  /**
+/**
  * Initialization
  */
 yeomanApp.run([
-  '$rootScope', '$location', 'UIEvents', 'NinjaService', 'UserService', 'PusherService', 'DeviceService'
-  ,function($rootScope, $location, UIEvents, NinjaService, UserService, PusherService,  DeviceService) {
+  '$rootScope', '$location', 'UIEvents', 'NinjaService', 'UserService', 'PusherService', 'DeviceService', 'UserStore', 'Button'
+  ,function($rootScope, $location, UIEvents, NinjaService, UserService, PusherService,  DeviceService, UserStore, Button) {
 
 
   /**
@@ -32,24 +40,32 @@ yeomanApp.run([
     $location.path(route);
   };
 
-
-  // Only initialize route change watches once the user status has been determined
-  $rootScope.$on(UIEvents.UserStatusChecked, function() {
-    // console.log("Status Checked");
-    $rootScope.$on('$routeChangeStart', function(eventObj, next, current) {
-      // console.log("route change: ", UserService.IsLoggedIn, next, current);
-    });
-
-
-    $rootScope.$on('$routeChangeSuccess', function(eventObj, current, previous) {
-      // console.log('route success', current, previous);
-    });
-  });
-
   /**
    * Automatically get the user login status
    */
   UserService.GetLoginStatus();
+  DeviceService.LoadUserDevices();
+
+
+
+  /**
+   * Automatically get the user store
+   */
+
+  // UserStore.SetData({ buttons: [ {name: 'button1'}, {name: 'button2'}] });
+  UserStore.GetData(function(data) {
+    console.log("UserStore:",data);
+  });
+
+
+  $rootScope.$on(UIEvents.SetDeviceType, function(event, deviceType) {
+    console.log("root");
+  });
+
+
 
 
 }]);
+
+
+yeomanApp.value('UserStoreUrl', '/user/store');

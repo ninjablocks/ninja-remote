@@ -1,8 +1,15 @@
 'use strict';
 
 yeomanApp.controller('MainCtrl'
-  , ['$scope'
-  , function($scope) {
+  , ['$scope', 'UIEvents'
+  , function($scope, UIEvents) {
+
+    $scope.ConfigureMode = false;
+
+
+    $scope.$on(UIEvents.SetConfigureMode, function(event, modeSwitch) {
+      $scope.ConfigureMode = modeSwitch;
+    });
 
 
 

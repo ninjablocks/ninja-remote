@@ -1288,13 +1288,14 @@ Ninja.AuthenticationModes = {
 Ninja.DeviceTypes = {
   UNDEFINED:      'undefined',
   BUTTON:         'button',
-  RGBLED:         'led',
+  RGBLED:         'rgbled',
   TEMPERATURE:    'temperature',
   HUMIDITY:       'humidity',
   RF433:          'rf433',
   MOTION:         'motion',
   DISTANCE:       'distance',
   WEBSERVICE:     'webservice',
+  RELAY:          'relay',
   ORIENTATION:    'orientation',
   LOCATION:       'location',
   ACCELERATION:   'acceleration',
@@ -1308,6 +1309,11 @@ Ninja.DeviceTypes = {
   FACEBOOK:       'facebook',
   TWITTER:        'twitter',
   NETWORK:        'network'
+};
+
+Ninja.DeviceModes = {
+  ACTUATOR:       'actuator',
+  SENSOR:         'sensor'
 };
 
 // Device Historical Data folding functions

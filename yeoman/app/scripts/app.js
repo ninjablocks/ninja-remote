@@ -55,11 +55,12 @@ yeomanApp.run([
   // UserStore.SetData({ buttons: [ {name: 'button1'}, {name: 'button2'}] });
   UserStore.GetData(function(data) {
     console.log("UserStore:",data);
+
   });
 
 
   $rootScope.$on(UIEvents.SetDeviceType, function(event, deviceType) {
-    console.log("root");
+    
   });
 
 

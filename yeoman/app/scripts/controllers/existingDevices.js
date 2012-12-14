@@ -10,7 +10,6 @@ yeomanApp.controller('ExistingDevicesCtrl'
 
     $scope.LoadDevices = function() {
       if ($scope.DeviceType) {
-        console.log("Updating Existing Devices", $scope.DeviceType);
         $scope.ExistingDevices = DeviceService.GetDeviceByType($scope.DeviceType);
       }
     };

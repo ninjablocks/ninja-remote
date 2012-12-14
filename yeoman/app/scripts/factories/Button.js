@@ -5,7 +5,8 @@ yeomanApp.factory('Button',
 
       this.Options = {
         name: '',
-        color: ''
+        color: '',
+        device: null
       };
       this.Options = NinjaUtilities.ObjectMerge(this.Options, options);
 

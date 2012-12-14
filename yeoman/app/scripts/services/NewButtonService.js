@@ -1,11 +1,21 @@
 'use strict';
 
-yeomanApp.factory('NewButtonService', function() {
+yeomanApp.factory('NewButtonService'
+  , ['Button'
+  , function() {
 
   var newButton = {
-    Type: ''
+    Type: '',
+
+    Button: null,
+
+    Reset: function() {
+      this.Button = null;
+      this.Type = '';
+    }
+
   };
 
   return newButton;
-  
-});
+
+}]);

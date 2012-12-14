@@ -4,8 +4,6 @@ yeomanApp.controller('HeaderCtrl'
   , ['$scope', '$rootScope', '$location', 'UIEvents'
   , function($scope, $rootScope, $location, UIEvents) {
 
-    console.log($location);
-
     $scope.ConfigureMode = false;
 
 

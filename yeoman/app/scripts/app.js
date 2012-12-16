@@ -44,7 +44,13 @@ yeomanApp.run([
    * Automatically get the user login status
    */
   UserService.GetLoginStatus();
-  DeviceService.LoadUserDevices();
+  UserStore.GetData(function(data) {
+    console.log("UserStore:",data);
+
+  });
+  DeviceService.LoadUserDevices(function() {
+
+  });
 
 
 
@@ -53,10 +59,6 @@ yeomanApp.run([
    */
 
   // UserStore.SetData({ buttons: [ {name: 'button1'}, {name: 'button2'}] });
-  UserStore.GetData(function(data) {
-    console.log("UserStore:",data);
-
-  });
 
 
   $rootScope.$on(UIEvents.SetDeviceType, function(event, deviceType) {

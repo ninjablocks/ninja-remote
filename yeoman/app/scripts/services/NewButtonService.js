@@ -9,6 +9,8 @@ yeomanApp.factory('NewButtonService'
 
     Button: null,
 
+    Device: null,
+
     Reset: function() {
       this.Button = null;
       this.Type = '';

@@ -2,6 +2,8 @@
   <h2>Buttons</h2>
   <a ng-click="setRoute('/selectButton')" ng-show="ConfigureMode">Add New button</a>
   <ul>
-    <li ng-repeat="button in Buttons"></li>
+    <li ng-repeat="button in Buttons">
+      Button: {{ button.Options.name }}
+    </li>
   </ul>  
 </div>

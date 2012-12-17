@@ -1,12 +1,14 @@
 'use strict';
 
 yeomanApp.factory('UserStore'
-  , ['$http', 'UserStoreUrl', 'Button'
-  , function($http, UserStoreUrl, Button) {
+  , ['$http', 'UserStoreUrl', 'Button', 'Guid'
+  , function($http, UserStoreUrl, Button, Guid) {
 
     var userStore = {
 
-      Data: {},
+      Data: {
+        Buttons: []
+      },
 
       /**
        * Get User Store data
@@ -42,6 +44,26 @@ yeomanApp.factory('UserStore'
         this.SetData(this.Data, callback);
       },
 
+
+      /**
+       * Adds a button to the Data.buttons array
+       * @param {[type]} button [description]
+       */
+      AddButton: function(button) {
+        
+        var buttonConfig = {
+          name: button.Options.name,
+          color: button.Options.color,
+          deviceGuid: button.GetDevice().GUID()
+        };
+
+        buttonConfig.id = Guid();
+        console.log(buttonConfig);
+        this.Data.Buttons.push(buttonConfig);
+      },
+
+
+
       /**
        * Extracts buttons form the Data
        * @param {object} data Optional data object to look into
@@ -51,9 +73,9 @@ yeomanApp.factory('UserStore'
         var buttons = [];
         var buttonData = (data) ? data : this.Data;
 
-        if (buttonData && buttonData.buttons) {
-          for(var i=0; i<buttonData.buttons.length; i++) {
-            var buttonConfig = buttonData.buttons[i];
+        if (buttonData && buttonData.Buttons) {
+          for(var i=0; i<buttonData.Buttons.length; i++) {
+            var buttonConfig = buttonData.Buttons[i];
             var button = new Button(buttonConfig);
             buttons.push(button);
           }

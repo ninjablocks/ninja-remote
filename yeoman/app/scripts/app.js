@@ -16,12 +16,16 @@ var yeomanApp = angular.module('yeomanApp', [])
         controller: 'ExistingDevicesCtrl'
       })
       .when('/configureDeviceLed', {
-        templateUrl: 'views/configureDeviceLed.html',
-        controller: 'ConfigureDeviceLedCtrl'
+        templateUrl: 'views/configureLed.html',
+        controller: 'ConfigureLedCtrl'
       })
       .when('/configureDeviceRelay', {
-        templateUrl: 'views/configureDeviceRelay.html',
-        controller: 'ConfigureDeviceRelayCtrl'
+        templateUrl: 'views/configureRelay.html',
+        controller: 'ConfigureRelayCtrl'
+      })
+      .when('/configureSocket', {
+        templateUrl: 'views/configureSocket.html',
+        controller: 'ConfigureSocketCtrl'
       })
       .otherwise({
         redirectTo: '/'

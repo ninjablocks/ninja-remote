@@ -1,6 +1,6 @@
 'use strict';
 
-yeomanApp.controller('ConfigureDeviceLedCtrl'
+yeomanApp.controller('ConfigureLedCtrl'
   , ['$scope', '$rootScope', 'UIEvents', 'NewButtonService', 'UserStore'
   , function($scope, $rootScope, UIEvents, NewButtonService, UserStore) {
 

@@ -14,7 +14,7 @@ var Ninja = function(options) {
   /***********************************************************
    * Properties
    ***********************************************************/
-  
+
   // Hack to inject into subobjects
   var that = this;
 
@@ -774,7 +774,9 @@ var Ninja = function(options) {
      * Generates a Ninja Blocks GUID
      */
     this.GUID = function() {
-      if (this.Options.block)
+      if (this.Options.hasOwnProperty('guid')) {
+        return this.Options.guid;
+      } else if (this.Options.block)
         return this.Options.block.Options.nodeId + '_' + this.Options.port + '_' + this.Options.vendor + '_' + this.Options.deviceId;
       else
         return 'Not associated with a block. Please Register this device';
@@ -791,6 +793,32 @@ var Ninja = function(options) {
         this.Options.channel = channel;
 
       }
+    };
+
+    /**
+     * Automatic loading function (if device instantiated with a Guid)
+     */
+    this.AutoLoadData = function() {
+      this.GetData(this.LoadData.bind(this));
+    };
+
+    /**
+     * Loads data (in the format received from backend)
+     * @param {object} response Object to load
+     */
+    this.LoadData = function(response) {
+      var block = new ninja.Block({nodeId: response.node});
+      this.Options.rawData = response;
+      this.Options.deviceId = parseInt(response.did, 10);
+      this.Options.vendor = parseInt(response.vid);
+      this.Options.port = response.gid;
+      this.Options.type = response.device_type;
+      this.Options.name = response.default_name;
+
+      if (response.last_data && response.last_data.hasOwnProperty('DA')) {
+        this.Options.value = response.last_data.DA;
+      }
+
     };
 
   
@@ -820,6 +848,7 @@ var Ninja = function(options) {
     };
 
 
+
     this.Options = {
       name:         "",
       type:         Ninja.DeviceTypes.UNDEFINED,
@@ -831,11 +860,6 @@ var Ninja = function(options) {
       subdevices:   [],
       onActuate:    function() { throw(".onActuate() not implemented."); }
     };
-
-
-    this.Options = Ninja.Utilities.ObjectMerge(this.Options, options);
-    this.Actuate = this.Options.onActuate;
-    Polymorph.bind(this)();
 
 
     /**
@@ -1118,6 +1142,15 @@ var Ninja = function(options) {
       }
     };
   
+
+    this.Options = Ninja.Utilities.ObjectMerge(this.Options, options);
+    this.Actuate = this.Options.onActuate;
+    Polymorph.bind(this)();
+
+    if (this.Options.hasOwnProperty('guid')) {
+      this.AutoLoadData();
+    }
+
   };
 
   /************************************************************
@@ -1295,7 +1328,6 @@ Ninja.DeviceTypes = {
   MOTION:         'motion',
   DISTANCE:       'distance',
   WEBSERVICE:     'webservice',
-  RELAY:          'relay',
   ORIENTATION:    'orientation',
   LOCATION:       'location',
   ACCELERATION:   'acceleration',
@@ -1311,6 +1343,7 @@ Ninja.DeviceTypes = {
   NETWORK:        'network'
 };
 
+// Device Modes
 Ninja.DeviceModes = {
   ACTUATOR:       'actuator',
   SENSOR:         'sensor'

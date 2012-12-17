@@ -1,6 +1,6 @@
 'use strict';
 
-yeomanApp.controller('ConfigureDeviceRelayCtrl'
+yeomanApp.controller('ConfigureRelayCtrl'
   , ['$scope', '$rootScope', 'UIEvents', 'NewButtonService', 'UserStore'
   , function($scope, $rootScope, UIEvents, NewButtonService, UserStore) {
 

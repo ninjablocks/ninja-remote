@@ -16,6 +16,7 @@ exports.proxy = function(req,res) {
   // Make the request
   request({
       url:'https://api.ninja.is'+req.url,
+      method:req.method,
       qs:query,
       json:req.body
   }).pipe(res);

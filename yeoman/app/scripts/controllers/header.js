@@ -24,5 +24,9 @@ yeomanApp.controller('HeaderCtrl'
       $rootScope.$broadcast(UIEvents.SetConfigureMode, $scope.ConfigureMode);
     };
 
+    $rootScope.$on(UIEvents.SetConfigureMode, function(event, configureMode) {
+      $scope.ConfigureMode = configureMode;
+    });
+
     
 }]);

@@ -22,6 +22,6 @@ yeomanApp.controller('SelectButtonCtrl'
       NewButtonService.Reset();
     };
 
-
+    $rootScope.$broadcast(UIEvents.SetConfigureMode, false);
 
 }]);

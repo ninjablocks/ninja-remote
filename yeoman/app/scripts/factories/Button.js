@@ -48,8 +48,6 @@ yeomanApp.factory('Button',
        * Actuate the Button. Abstracts the value switching if more than 1 value is applied
        */
       this.Actuate = function() {
-        console.log("Button.Actuate()");
-
         this.Options.device.Emit(GetActuateValue.call(this));
       };
 

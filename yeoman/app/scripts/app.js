@@ -19,6 +19,10 @@ var yeomanApp = angular.module('yeomanApp', [])
         templateUrl: 'views/configureDeviceLed.html',
         controller: 'ConfigureDeviceLedCtrl'
       })
+      .when('/configureDeviceRelay', {
+        templateUrl: 'views/configureDeviceRelay.html',
+        controller: 'ConfigureDeviceRelayCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

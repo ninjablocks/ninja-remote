@@ -5,7 +5,8 @@
     <tr ng-repeat="button in Buttons">
       <td>{{ button.Options.name }}</td>
       <td><a ng-click="button.Actuate()">Press</a></td>
-      <td><a ng-click="button.Delete()">Delete</a></td>
+      <td><a ng-click="" ng-show="ConfigureMode">Edit</a></td>
+      <td><a ng-click="button.Delete()" ng-show="ConfigureMode">Delete</a></td>
     </tr>
 
   </table>

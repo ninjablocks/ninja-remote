@@ -1,6 +1,6 @@
 yeomanApp.factory('Button',
-  [ 'NinjaService', 'NinjaUtilities'
-  , function(NinjaService, NinjaUtilities) {
+  [ '$rootScope', 'NinjaService', 'NinjaUtilities', 'UIEvents'
+  , function($rootScope, NinjaService, NinjaUtilities, UIEvents) {
     return function(options) {
 
       this.Options = {
@@ -36,6 +36,13 @@ yeomanApp.factory('Button',
         return true;
       }.bind(this);
 
+
+      /**
+       * Deletes this Button
+       */
+      this.Delete = function() {
+        $rootScope.$broadcast(UIEvents.ButtonRemoving, this);
+      };
 
       /**
        * Actuate the Button. Abstracts the value switching if more than 1 value is applied

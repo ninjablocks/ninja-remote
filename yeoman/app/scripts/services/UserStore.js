@@ -1,8 +1,8 @@
 'use strict';
 
 yeomanApp.factory('UserStore'
-  , ['$http', 'UserStoreUrl', 'Button', 'Guid'
-  , function($http, UserStoreUrl, Button, Guid) {
+  , ['$rootScope', '$http', 'UIEvents', 'UserStoreUrl', 'Button', 'Guid'
+  , function($rootScope, $http, UIEvents, UserStoreUrl, Button, Guid) {
 
     var userStore = {
 
@@ -86,6 +86,17 @@ yeomanApp.factory('UserStore'
         return config;
       },
 
+
+      /**
+       * Remoces a ButtonConfig from the Data.Buttons array
+       * @param {Button} button Button to remove
+       */
+      RemoveButton: function(button) {
+        var buttonConfig = this.GetButtonConfig(button.GetDevice().GUID());
+        var removeIndex = this.Data.Buttons.indexOf(buttonConfig);
+        this.Data.splice(removeIndex, 1);
+      },
+
       /**
        * Extracts buttons form the Data
        * @param {object} data Optional data object to look into
@@ -107,6 +118,13 @@ yeomanApp.factory('UserStore'
       }
 
     };
+
+
+    $rootScope.$on(UIEvents.ButtonRemoving, function(event, button) {
+      userStore.RemoveButton(button);
+      debugger;
+    })
+
 
     return userStore;
 }]);

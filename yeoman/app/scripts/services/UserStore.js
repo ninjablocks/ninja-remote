@@ -55,11 +55,13 @@ yeomanApp.factory('UserStore'
         var buttonConfig = {
           name: button.Options.name,
           color: button.Options.color,
+          value1: button.Options.value1,
+          value2: button.Options.value2,
           deviceGuid: button.GetDevice().GUID()
         };
 
         buttonConfig.id = Guid();
-        console.log(buttonConfig);
+        // console.log(buttonConfig);
         this.Data.Buttons.push(buttonConfig);
       },
 

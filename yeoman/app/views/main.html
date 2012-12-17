@@ -1,9 +1,12 @@
 <div class="buttons">
   <h2>Buttons</h2>
   <a ng-click="setRoute('/selectButton')" ng-show="ConfigureMode">Add New button</a>
-  <ul>
-    <li ng-repeat="button in Buttons">
-      Button: {{ button.Options.name }} <a ng-click="button.Actuate()">Press Button</a>
-    </li>
-  </ul>  
+  <table width="100%">
+    <tr ng-repeat="button in Buttons">
+      <td>{{ button.Options.name }}</td>
+      <td><a ng-click="button.Actuate()">Press</a></td>
+      <td><a ng-click="button.Delete()">Delete</a></td>
+    </tr>
+
+  </table>
 </div>

@@ -19,18 +19,27 @@ yeomanApp.factory('Button',
         }
       };
 
-
+      /**
+       * Gets the associated device for this button
+       */
       this.GetDevice = function() {
         return this.Options.device;
       }.bind(this);
 
 
+      /**
+       * Sets the associated device for this button
+       * @param {Device} device Device to use for this button
+       */
       this.SetDevice = function(device) {
         this.Options.device = device;
         return true;
       }.bind(this);
 
 
+      /**
+       * Actuate the Button. Abstracts the value switching if more than 1 value is applied
+       */
       this.Actuate = function() {
         console.log("Button.Actuate()");
 
@@ -39,6 +48,9 @@ yeomanApp.factory('Button',
 
       var nextValue = 'value1';
 
+      /**
+       * Determines which value to actuate to
+       */
       var GetActuateValue = function() {
         if (this.Options.value1 && this.Options.value2) {
           // Toggle between the two values

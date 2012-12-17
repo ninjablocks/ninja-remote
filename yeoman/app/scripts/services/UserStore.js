@@ -60,23 +60,31 @@ yeomanApp.factory('UserStore'
           deviceGuid: button.GetDevice().GUID()
         };
 
-        buttonConfig.id = Guid();
-        // console.log(buttonConfig);
-        this.Data.Buttons.push(buttonConfig);
+        if (button.Options.hasOwnProperty("id") && button.Options.id.length > 0) {
+          // Update Existing Button
+          buttonConfig.id = button.Options.id;
+          var existingButton = this.GetButtonConfig(buttonConfig.id);
+          existingButton = buttonConfig;
+        } else {
+          // Create New Button
+          buttonConfig.id = Guid();
+          this.Data.Buttons.push(buttonConfig);
+        }
+
       },
 
 
       /**
        * Retrieves a specific button config by Guid
-       * @param {string} guid Guid to search for
+       * @param {string} id id to search for
        */
-      GetButtonConfig: function(guid) {
+      GetButtonConfig: function(id) {
         var config = null;
 
         for (var i=0; i<this.Data.Buttons.length; i ++) {
 
           var buttonConfig = this.Data.Buttons[i];
-          if (buttonConfig.id === guid) {
+          if (buttonConfig.id === id) {
             config = buttonConfig;
             break;
           }
@@ -92,9 +100,13 @@ yeomanApp.factory('UserStore'
        * @param {Button} button Button to remove
        */
       RemoveButton: function(button) {
-        var buttonConfig = this.GetButtonConfig(button.GetDevice().GUID());
+        var buttonConfig = this.GetButtonConfig(button.Options.id);
         var removeIndex = this.Data.Buttons.indexOf(buttonConfig);
-        this.Data.splice(removeIndex, 1);
+        this.Data.Buttons.splice(removeIndex, 1);
+        console.log("Removing Button", removeIndex, this.Data.Buttons);
+        $rootScope.$broadcast(UIEvents.ButtonRemoved, button);
+
+        this.Save();
       },
 
       /**
@@ -122,8 +134,7 @@ yeomanApp.factory('UserStore'
 
     $rootScope.$on(UIEvents.ButtonRemoving, function(event, button) {
       userStore.RemoveButton(button);
-      debugger;
-    })
+    });
 
 
     return userStore;

@@ -4,7 +4,7 @@ yeomanApp.controller('ConfigureDeviceRelayCtrl'
   , ['$scope', '$rootScope', 'UIEvents', 'NewButtonService', 'UserStore'
   , function($scope, $rootScope, UIEvents, NewButtonService, UserStore) {
 
-    $scope.ButtonName = '';
+    $scope.ButtonName = NewButtonService.Button.Options.name;
 
     $scope.CheckDevice = function() {
       if (NewButtonService.Button.GetDevice() === null) {

@@ -5,8 +5,8 @@ yeomanApp.controller('ConfigureDeviceLedCtrl'
   , function($scope, $rootScope, UIEvents, NewButtonService, UserStore) {
 
 
-    $scope.ButtonName = '';
-    $scope.ButtonValue = '';
+    $scope.ButtonName = NewButtonService.Button.Options.name;
+    $scope.ButtonValue = NewButtonService.Button.Options.value1;
 
     /**
      * This page requires a device to be preselected

@@ -2,22 +2,22 @@
 
 yeomanApp.factory('NewButtonService'
   , ['Button'
-  , function() {
+  , function(Button) {
 
   var newButton = {
     Type: '',
 
-    Button: null,
-
-    Device: null,
+    Button: new Button(),
 
     Reset: function() {
-      this.Button = null;
+      this.Button = new Button();
       this.Type = '';
     }
 
   };
 
+  newButton.Reset();
+  
   return newButton;
 
 }]);

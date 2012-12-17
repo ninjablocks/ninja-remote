@@ -48,19 +48,22 @@ yeomanApp.run([
    * Automatically get the user login status
    */
   UserService.GetLoginStatus();
+
+  /**
+   * Automatically get the user store
+   */
   UserStore.GetData(function(data) {
     console.log("UserStore:",data);
 
   });
+  UserStore.SetData({Buttons: []});
   DeviceService.LoadUserDevices(function() {
 
   });
 
 
 
-  /**
-   * Automatically get the user store
-   */
+  
 
   // UserStore.SetData({ buttons: [ {name: 'button1'}, {name: 'button2'}] });
 

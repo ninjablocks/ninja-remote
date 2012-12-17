@@ -10,5 +10,15 @@ yeomanApp.factory('Button',
       };
       this.Options = NinjaUtilities.ObjectMerge(this.Options, options);
 
+
+      this.GetDevice = function() {
+        return this.Options.device;
+      }.bind(this);
+
+      this.SetDevice = function(device) {
+        this.Options.device = device;
+        return true;
+      }.bind(this);
+
     };
   }]);

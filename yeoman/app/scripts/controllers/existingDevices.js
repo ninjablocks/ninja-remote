@@ -9,6 +9,18 @@ yeomanApp.controller('ExistingDevicesCtrl'
 
 
     /**
+     * This route requires a $scope.DeviceType to be set. If none then redirect user
+     * back to selectButton page
+     **/
+    $scope.CheckDeviceType = function() {
+      if ($scope.DeviceType === '') {
+        $scope.setRoute('/selectButton');
+      }
+    };
+
+    $scope.CheckDeviceType();
+
+    /**
      * Loads the users devices to the UI
      */
     $scope.LoadDevices = function() {
@@ -21,8 +33,20 @@ yeomanApp.controller('ExistingDevicesCtrl'
      * Event Handler to use the selected device as the new button device
      */
     $scope.UseDevice = function(device) {
-      NewButtonService.Device = device;
-      console.log(NewButtonService);
+      NewButtonService.Button.SetDevice(device);
+
+      // TODO: Determine how to configure the new device
+      switch ($scope.DeviceType) {
+        case "rf433":
+          $scope.setRoute('/configureDeviceRf433');
+          break;
+        case "rgbled":
+          $scope.setRoute('/configureDeviceLed');
+          break;
+        case "relay":
+          $scope.setRoute('/configureDeviceRelay');
+          break;
+      }
     };
 
 

@@ -56,7 +56,6 @@ yeomanApp.run([
     console.log("UserStore:",data);
 
   });
-  UserStore.SetData({Buttons: []});
   DeviceService.LoadUserDevices(function() {
 
   });

@@ -6,6 +6,7 @@ yeomanApp.controller('ConfigureDeviceLedCtrl'
 
 
     $scope.ButtonName = '';
+    $scope.ButtonValue = '';
 
     /**
      * This page requires a device to be preselected
@@ -22,6 +23,7 @@ yeomanApp.controller('ConfigureDeviceLedCtrl'
      * @param {[type]} hexColor [description]
      */
     $scope.SetColor = function(hexColor) {
+      $scope.ButtonValue = hexColor;
       NewButtonService.Button.GetDevice().Options.value = hexColor;
     };
 
@@ -37,8 +39,9 @@ yeomanApp.controller('ConfigureDeviceLedCtrl'
      * Save the button to the control panel
      */
     $scope.Save = function() {
-      NewButtonService.Button.Options.name = $scope.ButtonName
-      UserStore.AddButton(NewButtonService.Button);
+      NewButtonService.Button.Options.name = $scope.ButtonName;
+      NewButtonService.Button.Options.value1 = $scope.ButtonValue;
+      UserStore.AddButtonConfig(NewButtonService.Button);
       UserStore.Save();
     };
 

@@ -22,6 +22,7 @@ yeomanApp.factory('UserStore'
           if (callback) {
             callback(response);
           }
+          console.log("GetData response", this.Data);
         }.bind(this));
       },
 
@@ -46,10 +47,10 @@ yeomanApp.factory('UserStore'
 
 
       /**
-       * Adds a button to the Data.buttons array
+       * Adds a button's configuration to the Data.buttons array
        * @param {[type]} button [description]
        */
-      AddButton: function(button) {
+      AddButtonConfig: function(button) {
         
         var buttonConfig = {
           name: button.Options.name,
@@ -63,6 +64,25 @@ yeomanApp.factory('UserStore'
       },
 
 
+      /**
+       * Retrieves a specific button config by Guid
+       * @param {string} guid Guid to search for
+       */
+      GetButtonConfig: function(guid) {
+        var config = null;
+
+        for (var i=0; i<this.Data.Buttons.length; i ++) {
+
+          var buttonConfig = this.Data.Buttons[i];
+          if (buttonConfig.id === guid) {
+            config = buttonConfig;
+            break;
+          }
+        
+        }
+
+        return config;
+      },
 
       /**
        * Extracts buttons form the Data

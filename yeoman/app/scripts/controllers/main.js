@@ -6,8 +6,13 @@ yeomanApp.controller('MainCtrl'
 
     $scope.ConfigureMode = false;
 
-    $scope.Buttons = UserStore.Data.Buttons;
+    $scope.Buttons = [];
 
+    // Watch for changes to the Buttons array
+    $scope.$watch('UserStore.Data.Buttons', function() {
+      $scope.Buttons = UserStore.GetButtons();
+      console.log('UserStore.Data.Buttons: changed', $scope.Buttons);
+    });
 
     $scope.$on(UIEvents.SetConfigureMode, function(event, modeSwitch) {
       $scope.ConfigureMode = modeSwitch;

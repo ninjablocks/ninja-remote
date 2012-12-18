@@ -17,7 +17,9 @@ yeomanApp.factory('UserStore'
       GetData: function(callback) {
 
         $http.get(UserStoreUrl).success(function(response) {
-          this.Data = response;
+          if (response) {
+            this.Data = response;
+          }
 
           if (callback) {
             callback(response);

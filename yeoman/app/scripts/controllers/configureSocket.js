@@ -29,7 +29,7 @@ yeomanApp.controller('ConfigureSocketCtrl'
             var detectedValue = $scope.GetDetectedValueFromEntries();
             if (detectedValue) {
               // Value detected. 
-              if (!NewButtonService.Button.Options.value1) {
+              if (!$scope.ButtonValue1) {
 
                 $scope.ButtonValue1 = detectedValue.DA;
               } else {
@@ -125,6 +125,9 @@ yeomanApp.controller('ConfigureSocketCtrl'
    * Saves current Button state to UserStore
    */
   $scope.Save = function() {
+    NewButtonService.Button.Options.name = $scope.ButtonName;
+    NewButtonService.Button.Options.value1 = $scope.ButtonValue1;
+    NewButtonService.Button.Options.value2 = $scope.ButtonValue2;
     UserStore.AddButtonConfig(NewButtonService.Button);
     UserStore.Save();
   };

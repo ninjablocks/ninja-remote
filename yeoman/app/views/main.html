@@ -4,7 +4,10 @@
   <table width="100%">
     <tr ng-repeat="button in Buttons">
       <td>{{ button.Options.name }} <small>({{ button.Options.id }})</small></td>
-      <td><a ng-click="button.Actuate()">Press</a></td>
+      <td>
+        <a ng-click="button.ActuateOn()" ng-show="button.Options.value1">On</a> 
+        <a ng-click="button.ActuateOff()" ng-show="button.Options.value2">Off</a>
+      </td>
       <td><a ng-click="EditButton(button)" ng-show="ConfigureMode">Edit</a></td>
       <td><a ng-click="button.Delete()" ng-show="ConfigureMode">Delete</a></td>
     </tr>

@@ -51,6 +51,14 @@ yeomanApp.factory('Button',
         this.Options.device.Emit(GetActuateValue.call(this));
       };
 
+      this.ActuateOn = function() {
+        this.Options.device.Emit(this.Options.value1);
+      };
+
+      this.ActuateOff = function() {
+        this.Options.device.Emit(this.Options.value2);
+      };
+
       var nextValue = 'value1';
 
       /**

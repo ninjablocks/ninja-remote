@@ -64,7 +64,9 @@ yeomanApp.factory('UserStore'
           // Update Existing Button
           buttonConfig.id = button.Options.id;
           var existingButton = this.GetButtonConfig(buttonConfig.id);
-          existingButton = buttonConfig;
+          var existingIndex = this.Data.Buttons.indexOf(existingButton);
+          this.Data.Buttons[existingIndex] = buttonConfig;
+          console.log("Button Config Updated:", buttonConfig);
         } else {
           // Create New Button
           buttonConfig.id = Guid();

@@ -20,12 +20,13 @@ yeomanApp.controller('MainCtrl'
 
       switch (type) {
         case Ninja.DeviceTypes.RGBLED:
-          $scope.setRoute('/configureDeviceLed');
+          $scope.setRoute('/configureLed');
           break; 
         case Ninja.DeviceTypes.RELAY:
-          $scope.setRoute('/configureDeviceRelay');
+          $scope.setRoute('/configureRelay');
           break;
         case Ninja.DeviceTypes.RF433:
+          $scope.setRoute('/configureSocket');
           break;
       }
     };

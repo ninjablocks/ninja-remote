@@ -38,13 +38,13 @@ yeomanApp.controller('ExistingDevicesCtrl'
       // TODO: Determine how to configure the new device
       switch ($scope.DeviceType) {
         case "rf433":
-          $scope.setRoute('/configureDeviceRf433');
+          $scope.setRoute('/configureSocket');
           break;
         case "rgbled":
-          $scope.setRoute('/configureDeviceLed');
+          $scope.setRoute('/configureLed');
           break;
         case "relay":
-          $scope.setRoute('/configureDeviceRelay');
+          $scope.setRoute('/configureRelay');
           break;
       }
     };
@@ -60,6 +60,8 @@ yeomanApp.controller('ExistingDevicesCtrl'
     });
 
 
+
+    // TODO: Check if only 1 device and automatically use it
 
 
 

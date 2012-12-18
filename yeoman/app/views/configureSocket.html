@@ -1,1 +1,25 @@
-<p>This is the configureSocket view.</p>
+<h2>Configure Socket</h2>
+
+<input type="text" placeholder="Name this socket">
+
+
+<div class="listener">
+  <a ng-click="Listen()" ng-show="!IsListening">Listen</a>
+  <a ng-click="Stop()" ng-show="IsListening">Stop</a>
+  <div class="signals" ng-show="IsListening">
+    <h5>Actuate the RF signal 3 times to pair</h5>
+    <ul>
+      <li ng-repeat="entry in ListenEntries">
+        RF {{ entry.DA }}: {{ entry.Count }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div>
+  <h5>Selected Values</h5>
+  <div>On: {{ ButtonValue1 }}</div>
+  <div>Off: {{ ButtonValue2 }}</div>
+</div>
+
+<a ng-click="Save()">Save</a>

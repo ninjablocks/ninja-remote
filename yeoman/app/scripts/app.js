@@ -56,6 +56,7 @@ yeomanApp.run([
    * Automatically get the user login status
    */
   UserService.GetLoginStatus();
+  UserService.GetInfo();
 
   /**
    * Automatically get the user store

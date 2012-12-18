@@ -87,7 +87,7 @@ app.all('/rest/v0/*', routes.proxy);
  * App Routes
  */
 
-// app.get('/', requiresAuthentication, routes.index);
+app.get('/', requiresAuthentication, routes.index);
 app.put('/user/store', requiresAuthentication, routes.putUserStore);
 app.get('/user/store', requiresAuthentication, routes.getUserStore);
 

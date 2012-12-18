@@ -43,6 +43,15 @@ yeomanApp.factory('UserStore'
 
       },
 
+      /**
+       * Initialize the Data store structure
+       */
+      InitData: function() {
+        this.Data = {
+          Buttons: []
+        }
+      },
+
       Save: function(callback) {
         this.SetData(this.Data, callback);
       },
@@ -72,6 +81,9 @@ yeomanApp.factory('UserStore'
         } else {
           // Create New Button
           buttonConfig.id = Guid();
+          if (!this.Data || !this.Data.Buttons) {
+            this.InitData();
+          }
           this.Data.Buttons.push(buttonConfig);
         }
 

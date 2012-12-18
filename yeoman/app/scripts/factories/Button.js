@@ -37,6 +37,12 @@ yeomanApp.factory('Button',
       }.bind(this);
 
 
+      this.HasValue = function(valueIndex) {
+        var value = (this.Options['value' + valueIndex]);
+        if (value && value.toString() === "0") return true;
+        else return (value) ? true : false;
+      };
+
       /**
        * Deletes this Button
        */

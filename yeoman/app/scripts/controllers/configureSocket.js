@@ -11,6 +11,7 @@ yeomanApp.controller('ConfigureSocketCtrl'
 
   $scope.IsListening = false;
   $scope.ListenEntries = [];
+  $scope.ListenTarget = null;
 
   /**
    * Handle Listening events
@@ -28,15 +29,8 @@ yeomanApp.controller('ConfigureSocketCtrl'
             
             var detectedValue = $scope.GetDetectedValueFromEntries();
             if (detectedValue) {
-              // Value detected. 
-              if (!$scope.ButtonValue1) {
-
-                $scope.ButtonValue1 = detectedValue.DA;
-              } else {
-                $scope.ButtonValue2 = detectedValue.DA;
-              }
-              console.log(detectedValue.DA, $scope.ButtonValue1, $scope.ButtonValue2);
-              $scope.RemoveEntry(detectedValue);
+              $scope[$scope.ListenTarget] = detectedValue.DA;
+              $scope.Stop();
             }
 
           } else {
@@ -48,7 +42,6 @@ yeomanApp.controller('ConfigureSocketCtrl'
 
             $scope.ListenEntries.push(entry);
           }
-          console.log("ListenEntries", $scope.ListenEntries);
         }
       }
     });
@@ -106,10 +99,22 @@ yeomanApp.controller('ConfigureSocketCtrl'
   };
 
 
+  $scope.ButtonIsListening = function(buttonTarget) {
+    if ($scope[buttonTarget] && $scope.IsListening) {
+      return true;
+    } else {
+      return ($scope.IsListening && $scope.ListenTarget === buttonTarget);
+    }
+  };
+
+
+
+
   /**
    * Activates RF433 Listening Mode
    */
-  $scope.Listen = function() {
+  $scope.Listen = function(targetValue) {
+    $scope.ListenTarget = targetValue;
     $scope.IsListening = true;
   };
 
@@ -118,7 +123,16 @@ yeomanApp.controller('ConfigureSocketCtrl'
    */
   $scope.Stop = function() {
     $scope.IsListening = false;
-    $scope.ListenEntries = {};
+    $scope.ListenEntries = [];
+    $scope.ListenTarget = null;
+  };
+
+  /**
+   * Clears the specified $scope variable
+   * @param {string} targetValue $scope variable to clear
+   */
+  $scope.Clear = function(targetValue) {
+    $scope[targetValue] = null;
   };
 
   /**
@@ -130,6 +144,8 @@ yeomanApp.controller('ConfigureSocketCtrl'
     NewButtonService.Button.Options.value2 = $scope.ButtonValue2;
     UserStore.AddButtonConfig(NewButtonService.Button);
     UserStore.Save();
+
+    $scope.setRoute('/');
   };
 
 }]);

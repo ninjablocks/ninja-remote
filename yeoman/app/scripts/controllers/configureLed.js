@@ -43,6 +43,8 @@ yeomanApp.controller('ConfigureLedCtrl'
       NewButtonService.Button.Options.value1 = $scope.ButtonValue;
       UserStore.AddButtonConfig(NewButtonService.Button);
       UserStore.Save();
+
+      $scope.setRoute('/');
     };
 
 

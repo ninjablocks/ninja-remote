@@ -15,11 +15,11 @@ var yeomanApp = angular.module('yeomanApp', [])
         templateUrl: 'views/existingDevices.html',
         controller: 'ExistingDevicesCtrl'
       })
-      .when('/configureDeviceLed', {
+      .when('/configureLed', {
         templateUrl: 'views/configureLed.html',
         controller: 'ConfigureLedCtrl'
       })
-      .when('/configureDeviceRelay', {
+      .when('/configureRelay', {
         templateUrl: 'views/configureRelay.html',
         controller: 'ConfigureRelayCtrl'
       })

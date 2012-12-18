@@ -2,12 +2,10 @@
 
 <input type="text" placeholder="Name this socket" ng-model="ButtonName">
 
+<p>To pair the On and Off signals. Click 'Listen' and press the socket RF button 3 times</p>
 
 <div class="listener">
-  <a ng-click="Listen()" ng-show="!IsListening">Listen</a>
-  <a ng-click="Stop()" ng-show="IsListening">Stop</a>
-  <div class="signals" ng-show="IsListening">
-    <h5>Actuate the RF signal 3 times to pair</h5>
+  <div class="signals" ng-show="ListenTarget">
     <ul>
       <li ng-repeat="entry in ListenEntries">
         RF {{ entry.DA }}: {{ entry.Count }}
@@ -17,9 +15,23 @@
 </div>
 
 <div>
-  <h5>Selected Values</h5>
-  <div>On: {{ ButtonValue1 }}</div>
-  <div>Off: {{ ButtonValue2 }}</div>
+  <h5>Signals</h5>
+  <div>On: 
+    <span ng-show="!ButtonValue1">
+    <a ng-click="Listen('ButtonValue1')" ng-show="!ButtonIsListening('ButtonValue1')">Listen</a>
+    <a ng-click="Stop()" ng-show="ButtonIsListening('ButtonValue1')">Stop</a>
+    </span>
+    {{ ButtonValue1 }} 
+    <a ng-click="Clear('ButtonValue1')" ng-show="ButtonValue1">Clear</a>
+  </div>
+  <div>Off:
+    <span ng-show="!ButtonValue2">
+    <a ng-click="Listen('ButtonValue2')" ng-show="!ButtonIsListening('ButtonValue2')">Listen</a>
+    <a ng-click="Stop()" ng-show="ButtonIsListening('ButtonValue2')">Stop</a>
+    </span>
+    {{ ButtonValue2 }}
+    <a ng-click="Clear('ButtonValue2')" ng-show="ButtonValue2">Clear</a>
+  </div>
 </div>
 
 <a ng-click="Save()">Save</a>

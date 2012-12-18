@@ -20,6 +20,8 @@ yeomanApp.controller('ConfigureRelayCtrl'
       NewButtonService.Button.Options.value2 = "0";
       UserStore.AddButtonConfig(NewButtonService.Button);
       UserStore.Save();
+
+      $scope.setRoute('/');
     };
 
 }]);

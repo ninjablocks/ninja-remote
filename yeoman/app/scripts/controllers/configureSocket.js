@@ -110,7 +110,6 @@ yeomanApp.controller('ConfigureSocketCtrl'
 
 
 
-
   /**
    * Activates RF433 Listening Mode
    */

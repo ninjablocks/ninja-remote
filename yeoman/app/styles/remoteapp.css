@@ -4715,6 +4715,16 @@ header {
     font-weight: 800;
     font-size: 20px; }
 
+.configure-socket h4 {
+  margin-bottom: 20px; }
+.configure-socket .panel h3 {
+  float: left !important; }
+.configure-socket .panel a.button {
+  display: inline-block; }
+.configure-socket .panel .signal-actions {
+  display: inline-block;
+  float: right; }
+
 @media only screen and (max-width: 767px) {
   .remote-button h3 {
     float: left !important;
@@ -4726,7 +4736,15 @@ header {
     float: left !important;
     width: inherit !important; }
   .existing-device .use {
-    float: right !important; } }
+    float: right !important; }
+
+  .configure-socket .panel h3 {
+    float: left !important; }
+  .configure-socket .panel a.button {
+    display: inline-block; }
+  .configure-socket .panel .signal-actions {
+    display: inline-block;
+    float: right; } }
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-family: 'Open Sans', sans-serif;

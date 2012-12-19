@@ -20,4 +20,20 @@
       float: right !important;
     }
   }
+
+  .configure-socket {
+    .panel {
+      h3 {
+        float: left !important;
+      }
+      a.button {
+        display: inline-block;
+      }
+
+      .signal-actions {
+        display: inline-block;
+        float: right;
+      }
+    }
+  }
 }

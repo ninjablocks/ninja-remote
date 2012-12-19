@@ -1,0 +1,19 @@
+  .configure-socket {
+    h4 {
+      margin-bottom: 20px;
+    }
+    
+    .panel {
+      h3 {
+        float: left !important;
+      }
+      a.button {
+        display: inline-block;
+      }
+
+      .signal-actions {
+        display: inline-block;
+        float: right;
+      }
+    }
+  }

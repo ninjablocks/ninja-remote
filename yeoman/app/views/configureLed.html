@@ -1,21 +1,25 @@
-<h3>Configure RGB LED</h3>
 <form name="configureLed">
+  <h4>Configure RGB LED</h4>
   
-  <input type="text" placeholder="Name This Button" ng-model="ButtonName" required>
+  <div class="row">
+    <div class="panel">
+      <input type="text" placeholder="Name This Button" ng-model="ButtonName" required>
 
-  <h5>Select a colour to Test to</h5>
+      <h5>Select a colour to Test to</h5>
 
-  <ul>
-    <li ng-click="SetColor('FF0000')"><a>Red</a></li>
-    <li ng-click="SetColor('FFFF00')"><a>Yellow</a></li>
-    <li ng-click="SetColor('0000FF')"><a>Blue</a></li>
-    <li ng-click="SetColor('FF00FF')"><a>Purple</a></li>
-    <li ng-click="SetColor('00FF00')"><a>Green</a></li>
-    <li ng-click="SetColor('FFFFFF')"><a>White</a></li>
-    <li ng-click="SetColor('000000')"><a>Black</a></li>
-  </ul>
+      <ul>
+        <li ng-click="SetColor('FF0000')"><a>Red</a></li>
+        <li ng-click="SetColor('FFFF00')"><a>Yellow</a></li>
+        <li ng-click="SetColor('0000FF')"><a>Blue</a></li>
+        <li ng-click="SetColor('FF00FF')"><a>Purple</a></li>
+        <li ng-click="SetColor('00FF00')"><a>Green</a></li>
+        <li ng-click="SetColor('FFFFFF')"><a>White</a></li>
+        <li ng-click="SetColor('000000')"><a>Black</a></li>
+      </ul>
 
-  <a ng-click="Test()">Test</a>
-  <a ng-click="Save()">Save</a>
+      <a ng-click="Test()">Test</a>
+      <a ng-click="Save()">Save</a>
 
+    </div>
+  </div>
 </form>

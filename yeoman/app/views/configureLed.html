@@ -1,25 +1,32 @@
 <form name="configureLed">
-  <h4>Configure RGB LED</h4>
+  <h4>Configure RGB Light</h4>
   
   <div class="row">
     <div class="panel">
+      <div class="alert-box alert" ng-show="!configureLed.$valid">
+        Please name this button
+      </div>
       <input type="text" placeholder="Name This Button" ng-model="ButtonName" required>
-
-      <h5>Select a colour to Test to</h5>
-
+      <input type="hidden" ng-model="ButtonValue" required>
+      <h5>Select a colour to set the RGB Light to</h5>
       <ul>
-        <li ng-click="SetColor('FF0000')"><a>Red</a></li>
-        <li ng-click="SetColor('FFFF00')"><a>Yellow</a></li>
-        <li ng-click="SetColor('0000FF')"><a>Blue</a></li>
-        <li ng-click="SetColor('FF00FF')"><a>Purple</a></li>
-        <li ng-click="SetColor('00FF00')"><a>Green</a></li>
-        <li ng-click="SetColor('FFFFFF')"><a>White</a></li>
-        <li ng-click="SetColor('000000')"><a>Black</a></li>
+        <li ng-click="SetColor('FF0000')"><a class="button large">Red</a></li>
+        <li ng-click="SetColor('FFFF00')"><a class="button large">Yellow</a></li>
+        <li ng-click="SetColor('0000FF')"><a class="button large">Blue</a></li>
+        <li ng-click="SetColor('FF00FF')"><a class="button large">Purple</a></li>
+        <li ng-click="SetColor('00FF00')"><a class="button large">Green</a></li>
+        <li ng-click="SetColor('FFFFFF')"><a class="button large">White</a></li>
+        <li ng-click="SetColor('000000')"><a class="button large">Black</a></li>
       </ul>
 
-      <a ng-click="Test()">Test</a>
-      <a ng-click="Save()">Save</a>
+      <a class="button" ng-click="Test()">Test</a>
+      
 
     </div>
+
+    <ul class="button-group radius even two-up">
+      <li><a class="button large alert radius" ng-click="setRoute('/selectButton')">Cancel</a></li>
+      <li><a class="button large success radius" ng-click="Save()">Save</a></li>
+    </ul>
   </div>
 </form>

@@ -32,6 +32,7 @@ yeomanApp.controller('ConfigureLedCtrl'
      */
     $scope.Test = function() {
       NewButtonService.Button.GetDevice().Emit(NewButtonService.Button.GetDevice().Options.value);
+      console.log($scope.configureLed);
     };
 
 
@@ -49,6 +50,7 @@ yeomanApp.controller('ConfigureLedCtrl'
       }
 
     };
+
 
 }]);
 

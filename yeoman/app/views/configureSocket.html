@@ -5,6 +5,7 @@
     <div class="panel">
       <input type="text" placeholder="Name this socket" ng-model="ButtonName" required>
       <h5 class="subheader">Signals</h5>
+      <h6>To pair the On and Off signals. Click 'Listen' and press the socket RF button 3 times</h6>
 
       <div class="panel">
         <h5>On {{ ButtonValue1 }} </h5>
@@ -33,9 +34,8 @@
     </div>
   
 
-  <p>To pair the On and Off signals. Click 'Listen' and press the socket RF button 3 times</p>
 
-  <div class="listener">
+  <div class="listener" style="display: none">
     <div class="signals" ng-show="ListenTarget">
       <ul>
         <li ng-repeat="entry in ListenEntries">
@@ -45,16 +45,11 @@
     </div>
   </div>
 
-  <div>
-    <h5>Signals</h5>
-    <div>On: 
-
-    </div>
-    <div>Off:
-
-    </div>
-  </div>
-
-  <a ng-click="Save()">Save</a>
+  <ul class="button-group radius even two-up">
+    <li><a class="button large alert radius" ng-click="setRoute('/selectButton')">Cancel</a></li>
+    <li><a class="button large success radius" ng-click="Save()">Save</a></li>
+  </ul>
+  
+  
   </div>
 </form>

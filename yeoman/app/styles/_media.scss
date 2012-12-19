@@ -1,4 +1,23 @@
 @media only screen and (max-width: 767px) {
   
-  
+  .remote-button {
+    h3 {
+      float: left !important;
+      width: inherit !important;
+    }
+
+    .button-bar {
+      float: right !important;
+    }
+  }
+
+  .existing-device {
+    .name {
+      float: left !important;
+      width: inherit !important;
+    }
+    .use {
+      float: right !important;
+    }
+  }
 }

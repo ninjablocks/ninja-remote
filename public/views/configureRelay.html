@@ -1,6 +1,23 @@
-<h3>Configure Relay</h3>
+<form name="configureRelay">
+  <h4>Configure Relay</h4>
 
-<input type="text" placeholder="Name this relay" ng-model="ButtonName">
+  <div class="row">
+    <div class="panel">
+      <div class="alert-box alert" ng-show="!configureRelay.$valid">
+        Please name this button.
+      </div>
+      <input type="text" placeholder="Name this relay" ng-model="ButtonName" required>
+      
+      <ul class="button-group even two-up">
+        <li><a class="button large" ng-click="Test('value2')">Test Off</a></li>
+        <li><a class="button large" ng-click="Test('value1')">Test On</a></li>
+      </ul>
+      
+    </div>
 
-<a ng-click="Test()">Test</a>
-<a ng-click="Save()">Save</a>
+    <ul class="button-group radius even two-up">
+      <li><a class="button large alert radius" ng-click="setRoute('/selectButton')">Cancel</a></li>
+      <li><a class="button large success radius" ng-click="Save()">Save</a></li>
+    </ul>
+  </div>
+</form>

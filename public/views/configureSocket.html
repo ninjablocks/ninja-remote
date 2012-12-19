@@ -1,37 +1,62 @@
-<h2>Configure Socket</h2>
+<form name="configureSocket" class="configure-socket">
+<h4>Configure Socket</h4>
 
-<input type="text" placeholder="Name this socket" ng-model="ButtonName">
+  <div class="row">
+    <div class="panel">
+      <input type="text" placeholder="Name this socket" ng-model="ButtonName" required>
+      <!-- <h5>Signals</h5> -->
+      <h6 class="subheader">To pair the On and Off signals. Click '<strong>Listen</strong>' and press the socket RF button 3 times</h6>
 
-<p>To pair the On and Off signals. Click 'Listen' and press the socket RF button 3 times</p>
+      <div class="panel">
+        <div class="row">
+          <h3 class="seven columns">On: <span class="label success" ng-show="ButtonValue1">{{ ButtonValue1 | rfHex }}</span> </h3>
 
-<div class="listener">
-  <div class="signals" ng-show="ListenTarget">
-    <ul>
-      <li ng-repeat="entry in ListenEntries">
-        RF {{ entry.DA }}: {{ entry.Count }}
-      </li>
-    </ul>
+          <span class="signal-actions" ng-show="!ButtonValue1">
+            <a class="button listen" ng-click="Listen('ButtonValue1')" ng-show="!ButtonIsListening('ButtonValue1')">Listen</a>
+            <a class="button" ng-click="Stop()" ng-show="ButtonIsListening('ButtonValue1')">Stop</a>
+          </span>
+          <ul class="button-group signal-actions" ng-show="ButtonValue1">
+            <li><a class="button alert" ng-click="Clear('ButtonValue1')">Clear</a></li>
+            <li><a class="button">Test</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="row">
+          <h3 class="seven columns">Off: <span class="label success" ng-show="ButtonValue2">{{ ButtonValue2 | rfHex }}</span></h3>
+
+          <span class="signal-actions" ng-show="!ButtonValue2">
+            <a class="button listen" ng-click="Listen('ButtonValue2')" ng-show="!ButtonIsListening('ButtonValue2')">Listen</a>
+            <a class="button" ng-click="Stop()" ng-show="ButtonIsListening('ButtonValue2')">Stop</a>
+          </span>
+
+          <ul class="button-group signal-actions" ng-show="ButtonValue2">
+            <li><a class="button alert" ng-click="Clear('ButtonValue2')">Clear</a></li>
+            <li><a class="button">Test</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  
+
+
+  <div class="listener" style="display: none">
+    <div class="signals" ng-show="ListenTarget">
+      <ul>
+        <li ng-repeat="entry in ListenEntries">
+          RF {{ entry.DA }}: {{ entry.Count }}
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<div>
-  <h5>Signals</h5>
-  <div>On: 
-    <span ng-show="!ButtonValue1">
-    <a ng-click="Listen('ButtonValue1')" ng-show="!ButtonIsListening('ButtonValue1')">Listen</a>
-    <a ng-click="Stop()" ng-show="ButtonIsListening('ButtonValue1')">Stop</a>
-    </span>
-    {{ ButtonValue1 }} 
-    <a ng-click="Clear('ButtonValue1')" ng-show="ButtonValue1">Clear</a>
+  <ul class="button-group radius even two-up">
+    <li><a class="button large alert radius" ng-click="setRoute('/selectButton')">Cancel</a></li>
+    <li><a class="button large success radius" ng-click="Save()">Save</a></li>
+  </ul>
+  
+  
   </div>
-  <div>Off:
-    <span ng-show="!ButtonValue2">
-    <a ng-click="Listen('ButtonValue2')" ng-show="!ButtonIsListening('ButtonValue2')">Listen</a>
-    <a ng-click="Stop()" ng-show="ButtonIsListening('ButtonValue2')">Stop</a>
-    </span>
-    {{ ButtonValue2 }}
-    <a ng-click="Clear('ButtonValue2')" ng-show="ButtonValue2">Clear</a>
-  </div>
-</div>
-
-<a ng-click="Save()">Save</a>
+</form>

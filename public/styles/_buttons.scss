@@ -1,0 +1,21 @@
+
+.add-new {
+  margin-bottom: 20px;
+}
+
+.remote-button {
+  position: relative;
+
+  .delete {
+    @include border-radius(20em);
+    position: absolute; 
+    top: -12px;
+    right: -12px;
+    background: black;
+    border: 2px solid white;
+    color: white;
+    padding: 0 9px;
+    font-weight: 800;
+    font-size: 20px;
+  }
+}

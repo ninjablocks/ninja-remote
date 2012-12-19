@@ -16,3 +16,16 @@ header {
     color: white;
   }
 }
+
+.top-bar {
+  position: relative;
+  margin-bottom: 0px;
+
+  .toggle-edit {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: white;
+  }  
+}
+

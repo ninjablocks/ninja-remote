@@ -24,11 +24,7 @@ exports.proxy = function(req,res) {
 
 exports.index = function(req, res){
 
-  var ninja = ninjaBlocks.app({access_token:req.session.token});
-  ninja.devices(function(err,devices) {
-
-    res.sendfile('public/index.html');
-  });
+  res.sendfile('public/index.html');
 };
 
 exports.putUserStore = function(req,res) {

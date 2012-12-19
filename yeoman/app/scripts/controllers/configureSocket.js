@@ -139,13 +139,17 @@ yeomanApp.controller('ConfigureSocketCtrl'
    * Saves current Button state to UserStore
    */
   $scope.Save = function() {
-    NewButtonService.Button.Options.name = $scope.ButtonName;
-    NewButtonService.Button.Options.value1 = $scope.ButtonValue1;
-    NewButtonService.Button.Options.value2 = $scope.ButtonValue2;
-    UserStore.AddButtonConfig(NewButtonService.Button);
-    UserStore.Save();
+    if ($scope.configureSocket.$valid) {
 
-    $scope.setRoute('/');
+      NewButtonService.Button.Options.name = $scope.ButtonName;
+      NewButtonService.Button.Options.value1 = $scope.ButtonValue1;
+      NewButtonService.Button.Options.value2 = $scope.ButtonValue2;
+      UserStore.AddButtonConfig(NewButtonService.Button);
+      UserStore.Save();
+
+      $scope.setRoute('/');
+      
+    }
   };
 
 }]);

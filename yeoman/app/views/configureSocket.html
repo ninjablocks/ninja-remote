@@ -1,37 +1,39 @@
 <h2>Configure Socket</h2>
+<form action="configureSocket">
 
-<input type="text" placeholder="Name this socket" ng-model="ButtonName">
+  <input type="text" placeholder="Name this socket" ng-model="ButtonName" required>
 
-<p>To pair the On and Off signals. Click 'Listen' and press the socket RF button 3 times</p>
+  <p>To pair the On and Off signals. Click 'Listen' and press the socket RF button 3 times</p>
 
-<div class="listener">
-  <div class="signals" ng-show="ListenTarget">
-    <ul>
-      <li ng-repeat="entry in ListenEntries">
-        RF {{ entry.DA }}: {{ entry.Count }}
-      </li>
-    </ul>
+  <div class="listener">
+    <div class="signals" ng-show="ListenTarget">
+      <ul>
+        <li ng-repeat="entry in ListenEntries">
+          RF {{ entry.DA }}: {{ entry.Count }}
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<div>
-  <h5>Signals</h5>
-  <div>On: 
-    <span ng-show="!ButtonValue1">
-    <a ng-click="Listen('ButtonValue1')" ng-show="!ButtonIsListening('ButtonValue1')">Listen</a>
-    <a ng-click="Stop()" ng-show="ButtonIsListening('ButtonValue1')">Stop</a>
-    </span>
-    {{ ButtonValue1 }} 
-    <a ng-click="Clear('ButtonValue1')" ng-show="ButtonValue1">Clear</a>
+  <div>
+    <h5>Signals</h5>
+    <div>On: 
+      <span ng-show="!ButtonValue1">
+      <a ng-click="Listen('ButtonValue1')" ng-show="!ButtonIsListening('ButtonValue1')">Listen</a>
+      <a ng-click="Stop()" ng-show="ButtonIsListening('ButtonValue1')">Stop</a>
+      </span>
+      {{ ButtonValue1 }} 
+      <a ng-click="Clear('ButtonValue1')" ng-show="ButtonValue1">Clear</a>
+    </div>
+    <div>Off:
+      <span ng-show="!ButtonValue2">
+      <a ng-click="Listen('ButtonValue2')" ng-show="!ButtonIsListening('ButtonValue2')">Listen</a>
+      <a ng-click="Stop()" ng-show="ButtonIsListening('ButtonValue2')">Stop</a>
+      </span>
+      {{ ButtonValue2 }}
+      <a ng-click="Clear('ButtonValue2')" ng-show="ButtonValue2">Clear</a>
+    </div>
   </div>
-  <div>Off:
-    <span ng-show="!ButtonValue2">
-    <a ng-click="Listen('ButtonValue2')" ng-show="!ButtonIsListening('ButtonValue2')">Listen</a>
-    <a ng-click="Stop()" ng-show="ButtonIsListening('ButtonValue2')">Stop</a>
-    </span>
-    {{ ButtonValue2 }}
-    <a ng-click="Clear('ButtonValue2')" ng-show="ButtonValue2">Clear</a>
-  </div>
-</div>
 
-<a ng-click="Save()">Save</a>
+  <a ng-click="Save()">Save</a>
+</form>

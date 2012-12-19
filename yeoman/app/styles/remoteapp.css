@@ -475,6 +475,13 @@ textarea[contenteditable] {
   padding: 10px;
   font-family: Courier; }
 
+input.ng-invalid {
+  -webkit-box-shadow: 0 0 6px #f8bbb9;
+  -moz-box-shadow: 0 0 6px #f8bbb9;
+  box-shadow: 0 0 6px #f8bbb9;
+  border-color: #e9352f;
+  border-width: 1px; }
+
 header {
   position: fixed;
   width: 100%;

@@ -1,6 +1,8 @@
 <h3>Configure Relay</h3>
 
-<input type="text" placeholder="Name this relay" ng-model="ButtonName">
-
-<a ng-click="Test()">Test</a>
-<a ng-click="Save()">Save</a>
+<form name="configureRelay">
+  <input type="text" placeholder="Name this relay" ng-model="ButtonName" required>
+  
+  <a ng-click="Test()">Test</a>
+  <a ng-click="Save()">Save</a>
+</form>

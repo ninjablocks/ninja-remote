@@ -15,13 +15,16 @@ yeomanApp.controller('ConfigureRelayCtrl'
 
 
     $scope.Save = function() {
-      NewButtonService.Button.Options.name = $scope.ButtonName;
-      NewButtonService.Button.Options.value1 = "1";
-      NewButtonService.Button.Options.value2 = "0";
-      UserStore.AddButtonConfig(NewButtonService.Button);
-      UserStore.Save();
+      if ($scope.configureRelay.$valid) {
+        
+        NewButtonService.Button.Options.name = $scope.ButtonName;
+        NewButtonService.Button.Options.value1 = "1";
+        NewButtonService.Button.Options.value2 = "0";
+        UserStore.AddButtonConfig(NewButtonService.Button);
+        UserStore.Save();
 
-      $scope.setRoute('/');
+        $scope.setRoute('/');
+      }
     };
 
 }]);

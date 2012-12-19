@@ -39,14 +39,22 @@ yeomanApp.controller('ConfigureLedCtrl'
      * Save the button to the control panel
      */
     $scope.Save = function() {
-      NewButtonService.Button.Options.name = $scope.ButtonName;
-      NewButtonService.Button.Options.value1 = $scope.ButtonValue;
-      UserStore.AddButtonConfig(NewButtonService.Button);
-      UserStore.Save();
+      if ($scope.configureLed.$valid) {
+        NewButtonService.Button.Options.name = $scope.ButtonName;
+        NewButtonService.Button.Options.value1 = $scope.ButtonValue;
+        UserStore.AddButtonConfig(NewButtonService.Button);
+        UserStore.Save();
 
-      $scope.setRoute('/');
+        $scope.setRoute('/');
+      }
+
     };
 
-
-
 }]);
+
+
+
+
+
+
+

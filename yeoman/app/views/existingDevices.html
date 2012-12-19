@@ -1,9 +1,15 @@
-<h2>Existing {{ DeviceType }} Devices</h2>
+<h3>Choose a Ninja Device</h3>
+<h6 class="subheader">Shown below are the existing related devices to pair with this button</h6>
 
-<ul>
-  <li ng-repeat="device in ExistingDevices">
-    Block {{ device.Options.block.Options.nodeId }}: {{ device.Options.name }} (<a ng-click="UseDevice(device)">Use</a>)
-  </li>
+<div class="panel" ng-repeat="device in ExistingDevices">
+  <h4>{{ device.Options.name }}</h4>
+  <h6 class="subheader">Block {{ device.Options.block.Options.nodeId }}</h6>
+  <a class="button" ng-click="UseDevice(device)">Use »</a>
+</div>
+
+<ul class="block-grid four-up mobile">
+  <li><a class="button" ng-click="setRoute('/selectButton')">Back</a></li>
+  <li></li>
+  <li></li>
+  <li></li>
 </ul>
-
-<a ng-click="setRoute('/selectButton')">Back</a>

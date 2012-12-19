@@ -32,6 +32,7 @@ yeomanApp.controller('ConfigureSocketCtrl'
               $scope[$scope.ListenTarget] = detectedValue.DA;
               $scope.Stop();
             }
+            console.log($scope.ListenEntries);
 
           } else {
             // New
@@ -148,7 +149,7 @@ yeomanApp.controller('ConfigureSocketCtrl'
       UserStore.Save();
 
       $scope.setRoute('/');
-      
+
     }
   };
 

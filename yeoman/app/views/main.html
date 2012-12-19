@@ -1,16 +1,31 @@
 <div class="buttons">
-  <h2>Buttons</h2>
-  <a ng-click="setRoute('/selectButton')" ng-show="ConfigureMode">Add New button</a>
-  <table width="100%">
-    <tr ng-repeat="button in Buttons">
-      <td>{{ button.Options.name }} <small>({{ button.Options.id }})</small></td>
-      <td>
-        <a ng-click="button.ActuateOn()" ng-show="button.HasValue(1)">On</a> 
-        <a ng-click="button.ActuateOff()" ng-show="button.HasValue(2)">Off</a>
-      </td>
-      <td><a ng-click="EditButton(button)" ng-show="ConfigureMode">Edit</a></td>
-      <td><a ng-click="button.Delete()" ng-show="ConfigureMode">Delete</a></td>
-    </tr>
+  <a class="button" ng-click="setRoute('/selectButton')" ng-show="ConfigureMode">Add New button</a>
 
-  </table>
+  <div class="row">
+    <div class="twelve columns">
+      <div class="panel clearfix" ng-repeat="button in Buttons" data-id="{{ button.Options.id }}">
+        <div class="row">
+            
+          <h3 class="six columns">{{ button.Options.name }}</h3>
+
+          <div class="button-bar six columns">
+            
+            <ul class="button-group radius">
+              <li><a class="button large radius" ng-click="button.ActuateOn()" ng-show="button.HasValue(1)">On</a></li>
+              <li><a class="button large radius" ng-click="button.ActuateOff()" ng-show="button.HasValue(2)">Off</a></li>
+            </ul>
+            <ul class="button-group">
+              <li><a class="button small" ng-click="EditButton(button)" ng-show="ConfigureMode">Edit</a></li>
+              <li><a class="button small" ng-click="button.Delete()" ng-show="ConfigureMode">Delete</a></li>
+            </ul>
+            
+          </div>
+          
+        </div>
+        
+        
+      </div>
+    </div>
+  </div>
+
 </div>

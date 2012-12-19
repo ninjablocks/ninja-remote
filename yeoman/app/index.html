@@ -19,6 +19,9 @@
         <link rel="apple-touch-icon-precomposed" href="img/touch/apple-touch-icon-57x57-precomposed.png">
         <link rel="shortcut icon" href="img/touch/apple-touch-icon.png">
 
+        <!-- Google Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,800,600,700' rel='stylesheet' type='text/css'>
+
         <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -42,12 +45,29 @@
             <script src="scripts/vendor/es5-shim.min.js"></script>
             <script src="scripts/vendor/json3.min.js"></script>
         <![endif]-->
-        <header ng-controller="HeaderCtrl">
-            <h1 ng-click="setRoute('/')">Ninja Remote</h1>
 
-            <a ng-show="LocationIsHome() && !ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure</a>
-            <a ng-show="LocationIsHome() && ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Finish</a>
-        </header>
+        <nav class="top-bar" ng-controller="HeaderCtrl">
+            <ul>
+                <li class="name">
+                    <h1 ng-click="setRoute('/')"><a href="#">Ninja Remote</a></h1>
+                </li>
+                <li class="toggle-edit">
+                    <a ng-show="LocationIsHome() && !ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure</a>
+                    <a ng-show="LocationIsHome() && ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Finish</a>
+                </li>
+            </ul>
+            <section>
+                <ul class="left">
+                    
+                </ul>
+                <ul class="right">
+                    
+                </ul>
+            </section>
+        </nav>
+        <ul class="breadcrumbs">
+            <li><a ng-click="setRoute('/')">Home</a></li>
+        </ul>
 
         <!-- Add your site or application content here -->
         <div class="wrapper">

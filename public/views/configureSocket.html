@@ -1,4 +1,4 @@
-<form name="configureSocket" class="configure-socket">
+<form name="configureSocket" class="configure-socket twelve columns">
 <h4>Configure Socket</h4>
 
   <div class="row">
@@ -9,32 +9,36 @@
 
       <div class="panel">
         <div class="row">
-          <h3 class="seven columns">On: <span class="label success" ng-show="ButtonValue1">{{ ButtonValue1 | rfHex }}</span> </h3>
+          <h5 class="four columns">On: <span class="label success" ng-show="ButtonValue1">{{ ButtonValue1 | rfHex }}</span> </h5>
 
-          <span class="signal-actions" ng-show="!ButtonValue1">
-            <a class="button listen" ng-click="Listen('ButtonValue1')" ng-show="!ButtonIsListening('ButtonValue1')">Listen</a>
-            <a class="button" ng-click="Stop()" ng-show="ButtonIsListening('ButtonValue1')">Stop</a>
-          </span>
-          <ul class="button-group signal-actions" ng-show="ButtonValue1">
-            <li><a class="button alert" ng-click="Clear('ButtonValue1')">Clear</a></li>
-            <li><a class="button">Test</a></li>
-          </ul>
+          <div class="button-bar seven">
+            <span class="signal-actions" ng-show="!ButtonValue1">
+              <a class="button listen" ng-click="Listen('ButtonValue1')" ng-show="!ButtonIsListening('ButtonValue1')">Listen</a>
+              <a class="button alert" ng-click="Stop()" ng-show="ButtonIsListening('ButtonValue1')">Stop</a>
+            </span>
+            <ul class="button-group signal-actions" ng-show="ButtonValue1">
+              <li><a class="button alert" ng-click="Clear('ButtonValue1')">Clear</a></li>
+              <li><a class="button">Test</a></li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <div class="panel">
         <div class="row">
-          <h3 class="seven columns">Off: <span class="label success" ng-show="ButtonValue2">{{ ButtonValue2 | rfHex }}</span></h3>
+          <h5 class="four columns">Off: <span class="label success" ng-show="ButtonValue2">{{ ButtonValue2 | rfHex }}</span></h5>
 
-          <span class="signal-actions" ng-show="!ButtonValue2">
-            <a class="button listen" ng-click="Listen('ButtonValue2')" ng-show="!ButtonIsListening('ButtonValue2')">Listen</a>
-            <a class="button" ng-click="Stop()" ng-show="ButtonIsListening('ButtonValue2')">Stop</a>
-          </span>
+          <div class="button-bar seven">
+            <span class="signal-actions" ng-show="!ButtonValue2">
+              <a class="button listen" ng-click="Listen('ButtonValue2')" ng-show="!ButtonIsListening('ButtonValue2')">Listen</a>
+              <a class="button alert" ng-click="Stop()" ng-show="ButtonIsListening('ButtonValue2')">Stop</a>
+            </span>
 
-          <ul class="button-group signal-actions" ng-show="ButtonValue2">
-            <li><a class="button alert" ng-click="Clear('ButtonValue2')">Clear</a></li>
-            <li><a class="button">Test</a></li>
-          </ul>
+            <ul class="button-group signal-actions" ng-show="ButtonValue2">
+              <li><a class="button alert" ng-click="Clear('ButtonValue2')">Clear</a></li>
+              <li><a class="button">Test</a></li>
+            </ul>
+          </div>
         </div>
       </div>
 

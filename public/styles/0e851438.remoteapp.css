@@ -4698,7 +4698,13 @@ header {
   margin-bottom: 20px; }
 
 .remote-button {
-  position: relative; }
+  padding: 10px;
+  position: relative;
+  margin-bottom: 10px; }
+  .remote-button h5 {
+    line-height: 2em; }
+  .remote-button .button-group {
+    margin-bottom: 0px; }
   .remote-button .delete {
     -webkit-border-radius: 20em;
     -moz-border-radius: 20em;
@@ -4715,18 +4721,58 @@ header {
     font-weight: 800;
     font-size: 20px; }
 
+.existing-devices .existing-device h6 {
+  margin-bottom: 0px; }
+
 .configure-socket h4 {
   margin-bottom: 20px; }
-.configure-socket .panel h3 {
-  float: left !important; }
-.configure-socket .panel a.button {
-  display: inline-block; }
-.configure-socket .panel .signal-actions {
-  display: inline-block;
-  float: right; }
+.configure-socket .panel {
+  margin-bottom: 10px; }
+  .configure-socket .panel h5 {
+    float: left !important;
+    line-height: 2em;
+    padding-right: 0px; }
+  .configure-socket .panel a.button {
+    display: inline-block; }
+  .configure-socket .panel .signal-actions {
+    display: inline-block;
+    float: right;
+    margin-right: 5px; }
+
+.configure-led .colors .button {
+  background-color: gray;
+  border-color: #666666;
+  opacity: 0.5; }
+  .configure-led .colors .button.selected {
+    opacity: 1; }
+    .configure-led .colors .button.selected.red {
+      background-color: #ca2b45;
+      border-color: #7e1b2b; }
+    .configure-led .colors .button.selected.yellow {
+      background-color: #efc91f;
+      border-color: #8f770a; }
+    .configure-led .colors .button.selected.blue {
+      background-color: #0e57cd;
+      border-color: #0a3d8f; }
+    .configure-led .colors .button.selected.cyan {
+      background-color: #0fd2cb;
+      border-color: #0a8f8b; }
+    .configure-led .colors .button.selected.purple {
+      background-color: #6e0ecd;
+      border-color: #4c0a8f; }
+    .configure-led .colors .button.selected.green {
+      background-color: #5ecd0e;
+      border-color: #418f0a; }
+    .configure-led .colors .button.selected.white {
+      background-color: white;
+      border-color: gray;
+      color: #999; }
+    .configure-led .colors .button.selected.black {
+      background-color: #404040;
+      border-color: #262626; }
 
 @media only screen and (max-width: 767px) {
-  .remote-button h3 {
+  .remote-button h5 {
     float: left !important;
     width: inherit !important; }
   .remote-button .button-bar {
@@ -4738,13 +4784,9 @@ header {
   .existing-device .use {
     float: right !important; }
 
-  .configure-socket .panel h3 {
-    float: left !important; }
-  .configure-socket .panel a.button {
-    display: inline-block; }
-  .configure-socket .panel .signal-actions {
-    display: inline-block;
-    float: right; } }
+  .configure-socket .panel h5 {
+    float: left !important;
+    width: 37% !important; } }
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
@@ -4757,3 +4799,6 @@ body {
 
 a.button {
   color: white; }
+
+.panel {
+  padding: 10px; }

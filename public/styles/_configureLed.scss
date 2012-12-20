@@ -1,0 +1,50 @@
+
+.configure-led {
+ 
+ .colors {
+  .button {
+    background-color: hsl(0, 0%, 50%);
+    border-color: hsl(0, 0%, 40%);
+    opacity: 0.5;
+
+    &.selected {
+      opacity: 1;
+      
+      &.red {
+        background-color: hsl(350, 65%, 48%);
+        border-color: hsl(350, 65%, 30%);
+      }
+      &.yellow {
+        background-color: hsl(49, 87%, 53%);
+        border-color: hsl(49, 87%, 30%);
+      }
+      &.blue {
+        background-color: hsl(217, 87%, 43%);
+        border-color: hsl(217, 87%, 30%);
+      }
+      &.cyan {
+        background-color: hsl(178, 87%, 44%);
+        border-color: hsl(178, 87%, 30%);
+      }
+      &.purple {
+        background-color: hsl(270, 87%, 43%);
+        border-color: hsl(270, 87%, 30%);
+      }
+      &.green {
+        background-color: hsl(95, 87%, 43%);
+        border-color: hsl(95, 87%, 30%);
+      }
+      &.white {
+        background-color: hsl(0, 0%, 100%);
+        border-color: hsl(0, 0%, 50%);
+        color: #999;
+      }
+      &.black {
+        background-color: hsl(0, 0%, 25%);
+        border-color: hsl(0, 0%, 15%);
+      }
+
+    }
+  }
+ } 
+}

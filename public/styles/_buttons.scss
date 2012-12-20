@@ -4,7 +4,17 @@
 }
 
 .remote-button {
+  padding: 10px;
   position: relative;
+  margin-bottom: 10px;
+
+  h5 {
+    line-height: 2em;
+  }
+
+  .button-group {
+    margin-bottom: 0px;
+  }
 
   .delete {
     @include border-radius(20em);
@@ -18,4 +28,5 @@
     font-weight: 800;
     font-size: 20px;
   }
+
 }

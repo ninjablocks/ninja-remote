@@ -4,8 +4,13 @@
     }
     
     .panel {
-      h3 {
+      margin-bottom: 10px;
+      // margin-top: 10px;
+
+      h5 {
         float: left !important;
+        line-height: 2em;
+        padding-right: 0px;
       }
       a.button {
         display: inline-block;
@@ -14,6 +19,7 @@
       .signal-actions {
         display: inline-block;
         float: right;
+        margin-right: 5px;
       }
     }
   }

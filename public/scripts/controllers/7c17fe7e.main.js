@@ -22,6 +22,7 @@ yeomanApp.controller('MainCtrl'
           $scope.setRoute('/configureLed');
           break; 
         case Ninja.DeviceTypes.RELAY:
+        console.log("nav to relay");
           $scope.setRoute('/configureRelay');
           break;
         case Ninja.DeviceTypes.RF433:

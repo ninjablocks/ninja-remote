@@ -3,7 +3,7 @@
   <br>
   <div class="row">
     <div class="panel">
-      <div class="alert-box alert" ng-show="!configureRelay.$valid">
+      <div class="alert-box alert" ng-show="!configureRelay.$valid && !ButtonName">
         Please name this button.
       </div>
       <input type="text" placeholder="Name this relay" ng-model="ButtonName" required>

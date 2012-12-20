@@ -25,9 +25,28 @@ yeomanApp.controller('ExistingDevicesCtrl'
      */
     $scope.LoadDevices = function() {
       if ($scope.DeviceType) {
-        $scope.ExistingDevices = DeviceService.GetDeviceByType($scope.DeviceType);
+        if ($scope.DeviceType === 'rf433-button') {
+          $scope.ExistingDevices = DeviceService.GetDeviceByType('rf433');
+        } else {
+          $scope.ExistingDevices = DeviceService.GetDeviceByType($scope.DeviceType);
+        }
+        $scope.SmartCheck();
       }
     };
+
+    /**
+     * Checks the devices for inferred selections
+     */
+    $scope.SmartCheck = function() {
+      // TODO: Check if only 1 device and automatically use it
+      if ($scope.ExistingDevices.length === 1) {
+        var defaultDevice = $scope.ExistingDevices[0];
+        $scope.UseDevice(defaultDevice);
+      } else if ($scope.ExistingDevices.length === 0) {
+        $scope.setRoute('/selectButton');
+      }
+    };
+
 
     /**
      * Event Handler to use the selected device as the new button device
@@ -39,6 +58,9 @@ yeomanApp.controller('ExistingDevicesCtrl'
       switch ($scope.DeviceType) {
         case "rf433":
           $scope.setRoute('/configureSocket');
+          break;
+        case "rf433-button":
+          $scope.setRoute('/configureRfButton');
           break;
         case "rgbled":
           $scope.setRoute('/configureLed');
@@ -60,13 +82,6 @@ yeomanApp.controller('ExistingDevicesCtrl'
     });
 
 
-    // TODO: Check if only 1 device and automatically use it
-    if ($scope.ExistingDevices.length === 1) {
-      var defaultDevice = $scope.ExistingDevices[0];
-      $scope.UseDevice(defaultDevice);
-    } else if ($scope.ExistingDevices.length === 0) {
-      $scope.setRoute('/selectButton');
-    }
 
 
 }]);

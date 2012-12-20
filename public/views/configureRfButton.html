@@ -1,0 +1,30 @@
+<form name="configureRfButton" class="configure-rf-button twelve columns">
+    <h4>Configure RF Button</h4>
+    <br>
+    <div class="row">
+      <div class="panel">
+        <div class="alert-box alert" ng-show="!configureRfButton.$valid">Please name this button</div>
+        <input type="text" placeholder="Name this button" ng-model="ButtonName" required>
+        <h6 class="subheader">To pair an RF button, click 'Listen' and press the RF button 3 times</h6>
+
+        <div class="panel">
+          <h5 class="three columns"> <span class="label success" ng-show="ButtonValue">{{ ButtonValue | rfHex }}</span> </h5>
+
+          <div class="button-bar nine">
+            <span class="signal-actions" ng-show="!ButtonValue">
+              <a class="button listen" ng-click="Listen()" ng-show="!ButtonIsListening()">Listen</a>
+              <a class="button alert" ng-click="Stop()" ng-show="ButtonIsListening()">Stop</a>
+            </span>
+            <ul class="button-group signal-actions" ng-show="ButtonValue">
+              <li><a class="button alert" ng-click="Clear()">Clear</a></li>
+              <li><a class="button">Test</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <ul class="button-group radius even two-up">
+        <li><a class="button large alert radius" ng-click="setRoute('/selectButton')">Cancel</a></li>
+        <li><a class="button large success radius" ng-click="Save()">Save</a></li>
+      </ul>
+    </div>
+</form>

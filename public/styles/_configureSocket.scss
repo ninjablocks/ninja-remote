@@ -23,3 +23,20 @@
       }
     }
   }
+
+  .configure-rf-button {
+
+    .panel {
+      h5 {
+        float: left !important;
+        line-height: 2em;
+        padding-right: 0px;
+      }
+      .signal-actions {
+        display: inline-block;
+        float: right;
+        margin: 0;
+      }
+    }
+
+  }

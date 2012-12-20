@@ -4698,7 +4698,12 @@ header {
   margin-bottom: 20px; }
 
 .remote-button {
+  padding: 10px;
   position: relative; }
+  .remote-button h5 {
+    line-height: 2em; }
+  .remote-button .button-group {
+    margin-bottom: 0px; }
   .remote-button .delete {
     -webkit-border-radius: 20em;
     -moz-border-radius: 20em;
@@ -4726,7 +4731,7 @@ header {
   float: right; }
 
 @media only screen and (max-width: 767px) {
-  .remote-button h3 {
+  .remote-button h5 {
     float: left !important;
     width: inherit !important; }
   .remote-button .button-bar {

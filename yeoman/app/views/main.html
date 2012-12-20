@@ -1,21 +1,22 @@
 <div class="buttons">
-  <a class="add-new button success large" ng-click="setRoute('/selectButton')" ng-show="ConfigureMode">Add New button</a>
 
   <div class="row">
     <div class="twelve columns">
+      <a class="add-new button success large" ng-click="setRoute('/selectButton')" ng-show="ConfigureMode">Add New</a>
+
       <div class="panel clearfix remote-button" ng-repeat="button in Buttons" data-id="{{ button.Options.id }}">
         <div class="row">
             
-          <h3 class="name eight columns">{{ button.Options.name }}</h3>
+          <h5 class="name eight columns">{{ button.Options.name }}</h5>
 
           <div class="button-bar actions four columns">
             
             <ul class="button-group radius" ng-show="!ConfigureMode">
-              <li><a class="button large success radius" ng-click="button.ActuateOn()" ng-show="button.HasValue(1)">On</a></li>
-              <li><a class="button large alert radius" ng-click="button.ActuateOff()" ng-show="button.HasValue(2)">Off</a></li>
+              <li><a class="button success radius" ng-click="button.ActuateOn()" ng-show="button.HasValue(1)">On</a></li>
+              <li><a class="button alert radius" ng-click="button.ActuateOff()" ng-show="button.HasValue(2)">Off</a></li>
             </ul>
             <ul class="button-group radius" ng-show="ConfigureMode">
-              <li><a class="button large radius" ng-click="EditButton(button)">Edit</a></li>
+              <li><a class="button radius" ng-click="EditButton(button)">Edit</a></li>
             </ul>
             
           </div>

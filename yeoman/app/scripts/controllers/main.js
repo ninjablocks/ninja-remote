@@ -25,7 +25,11 @@ yeomanApp.controller('MainCtrl'
           $scope.setRoute('/configureRelay');
           break;
         case Ninja.DeviceTypes.RF433:
-          $scope.setRoute('/configureSocket');
+          if (!button.Options.value2) {
+            $scope.setRoute('/configureRfButton');
+          } else {
+            $scope.setRoute('/configureSocket');
+          }
           break;
       }
     };

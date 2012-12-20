@@ -27,6 +27,10 @@ var yeomanApp = angular.module('yeomanApp', [])
         templateUrl: 'views/configureSocket.html',
         controller: 'ConfigureSocketCtrl'
       })
+      .when('/configureRfButton', {
+        templateUrl: 'views/configureRfButton.html',
+        controller: 'ConfigureRfButtonCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

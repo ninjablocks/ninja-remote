@@ -4739,6 +4739,15 @@ header {
     float: right;
     margin-right: 5px; }
 
+.configure-rf-button .panel h5 {
+  float: left !important;
+  line-height: 2em;
+  padding-right: 0px; }
+.configure-rf-button .panel .signal-actions {
+  display: inline-block;
+  float: right;
+  margin: 0; }
+
 .configure-led .colors .button {
   background-color: gray;
   border-color: #666666;

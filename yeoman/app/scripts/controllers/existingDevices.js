@@ -25,7 +25,11 @@ yeomanApp.controller('ExistingDevicesCtrl'
      */
     $scope.LoadDevices = function() {
       if ($scope.DeviceType) {
-        $scope.ExistingDevices = DeviceService.GetDeviceByType($scope.DeviceType);
+        if ($scope.DeviceType === 'rf433-button') {
+          $scope.ExistingDevices = DeviceService.GetDeviceByType('rf433');
+        } else {
+          $scope.ExistingDevices = DeviceService.GetDeviceByType($scope.DeviceType);
+        }
         $scope.SmartCheck();
       }
     };
@@ -41,7 +45,7 @@ yeomanApp.controller('ExistingDevicesCtrl'
       } else if ($scope.ExistingDevices.length === 0) {
         $scope.setRoute('/selectButton');
       }
-    }
+    };
 
 
     /**
@@ -54,6 +58,9 @@ yeomanApp.controller('ExistingDevicesCtrl'
       switch ($scope.DeviceType) {
         case "rf433":
           $scope.setRoute('/configureSocket');
+          break;
+        case "rf433-button":
+          $scope.setRoute('/configureRfButton');
           break;
         case "rgbled":
           $scope.setRoute('/configureLed');

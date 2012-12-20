@@ -26,23 +26,8 @@ yeomanApp.controller('ExistingDevicesCtrl'
     $scope.LoadDevices = function() {
       if ($scope.DeviceType) {
         $scope.ExistingDevices = DeviceService.GetDeviceByType($scope.DeviceType);
-        $scope.SmartCheck();
       }
     };
-
-    /**
-     * Checks the devices for inferred selections
-     */
-    $scope.SmartCheck = function() {
-      // TODO: Check if only 1 device and automatically use it
-      if ($scope.ExistingDevices.length === 1) {
-        var defaultDevice = $scope.ExistingDevices[0];
-        $scope.UseDevice(defaultDevice);
-      } else if ($scope.ExistingDevices.length === 0) {
-        $scope.setRoute('/selectButton');
-      }
-    }
-
 
     /**
      * Event Handler to use the selected device as the new button device
@@ -75,6 +60,13 @@ yeomanApp.controller('ExistingDevicesCtrl'
     });
 
 
+    // TODO: Check if only 1 device and automatically use it
+    if ($scope.ExistingDevices.length === 1) {
+      var defaultDevice = $scope.ExistingDevices[0];
+      $scope.UseDevice(defaultDevice);
+    } else if ($scope.ExistingDevices.length === 0) {
+      $scope.setRoute('/selectButton');
+    }
 
 
 }]);

@@ -1,22 +1,24 @@
-<form name="configureLed">
+<form name="configureLed" class="configure-led twelve columns">
   <h4>Configure RGB Light</h4>
-  
+  <br>
   <div class="row">
     <div class="panel">
-      <div class="alert-box alert" ng-show="!configureLed.$valid">
+      <div class="alert-box alert" ng-show="!configureLed.$valid && !ButtonName">
         Please name this button
       </div>
       <input type="text" placeholder="Name This Button" ng-model="ButtonName" required>
       <input type="hidden" ng-model="ButtonValue" required>
-      <h5>Select a colour to set the RGB Light to</h5>
-      <ul>
-        <li ng-click="SetColor('FF0000')"><a class="button large">Red</a></li>
-        <li ng-click="SetColor('FFFF00')"><a class="button large">Yellow</a></li>
-        <li ng-click="SetColor('0000FF')"><a class="button large">Blue</a></li>
-        <li ng-click="SetColor('FF00FF')"><a class="button large">Purple</a></li>
-        <li ng-click="SetColor('00FF00')"><a class="button large">Green</a></li>
-        <li ng-click="SetColor('FFFFFF')"><a class="button large">White</a></li>
-        <li ng-click="SetColor('000000')"><a class="button large">Black</a></li>
+      <!-- <h5 class="subheader">Select a colour</h5> -->
+      <div class="alert-box " ng-show="!configureLed.$valid && !ButtonValue">Select a colour</div>
+      <ul class="block-grid two-up colors">
+        <li><a selectable data-color="FF0000" class="button red">Red</a></li>
+        <li><a selectable data-color="FFFF00" class="button yellow">Yellow</a></li>
+        <li><a selectable data-color="0000FF" class="button blue">Blue</a></li>
+        <li><a selectable data-color="FF00FF" class="button purple">Purple</a></li>
+        <li><a selectable data-color="00FF00" class="button green">Green</a></li>
+        <li><a selectable data-color="00FFFF" class="button cyan">Cyan</a></li>
+        <li><a selectable data-color="FFFFFF" class="button white">White</a></li>
+        <li><a selectable data-color="000000" class="button black">Black</a></li>
       </ul>
 
       <a class="button" ng-click="Test()">Test</a>

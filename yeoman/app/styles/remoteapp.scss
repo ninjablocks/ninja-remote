@@ -16,6 +16,7 @@
 @import "buttons";
 @import "existingDevices";
 @import "configureSocket";
+@import "configureLed";
 
 @import "media";
 
@@ -33,4 +34,8 @@ body {
 }
 a.button {
   color: white;
+}
+
+.panel {
+  padding: 10px;
 }

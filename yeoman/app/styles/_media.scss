@@ -23,16 +23,17 @@
 
   .configure-socket {
     .panel {
-      h3 {
+      h5 {
         float: left !important;
+        width: 37% !important;
       }
       a.button {
-        display: inline-block;
+        // display: inline-block;
       }
 
       .signal-actions {
-        display: inline-block;
-        float: right;
+        // display: inline-block;
+        // float: right;
       }
     }
   }

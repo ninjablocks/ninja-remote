@@ -46,25 +46,27 @@
             <script src="scripts/vendor/json3.min.js"></script>
         <![endif]-->
 
-        <nav class="top-bar" ng-controller="HeaderCtrl">
-            <ul>
-                <li class="name">
-                    <h1 ng-click="setRoute('/')"><a href="#">Ninja Remote</a></h1>
-                </li>
-                <li class="toggle-edit">
-                    <a ng-show="LocationIsHome() && !ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure</a>
-                    <a ng-show="LocationIsHome() && ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Finish</a>
-                </li>
-            </ul>
-            <section>
-                <ul class="left">
-                    
+        <div class="fixed">
+            <nav class="top-bar" ng-controller="HeaderCtrl">
+                <ul>
+                    <li class="name">
+                        <h1 ng-click="setRoute('/')"><a href="#">Ninja Remote</a></h1>
+                    </li>
+                    <li class="toggle-edit">
+                        <a ng-show="LocationIsHome() && !ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure</a>
+                        <a ng-show="LocationIsHome() && ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Finish</a>
+                    </li>
                 </ul>
-                <ul class="right">
-                    
-                </ul>
-            </section>
-        </nav>
+                <section>
+                    <ul class="left">
+                        
+                    </ul>
+                    <ul class="right">
+                        
+                    </ul>
+                </section>
+            </nav>
+        </div>
         <ul class="breadcrumbs">
             <li><a ng-click="setRoute('/')">Home</a></li>
         </ul>

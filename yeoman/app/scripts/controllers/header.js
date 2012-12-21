@@ -11,7 +11,7 @@ yeomanApp.controller('HeaderCtrl'
      * Determines if the current location is the main homepage
      */
     $scope.LocationIsHome = function() {
-      return ($location.$$path == '/');
+      return ($location.$$path === '/');
     };
 
 

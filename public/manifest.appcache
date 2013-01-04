@@ -1,7 +1,11 @@
 # LoadUserDevices (undefined, #undefined)
+# XMLHttpRequest cannot load http://localhost:8000/rest/v0/user. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
+# XMLHttpRequest cannot load http://localhost:8000/rest/v0/user. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
+# XMLHttpRequest cannot load http://localhost:8000/rest/v0/devices. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
+# XMLHttpRequest cannot load http://localhost:8000/rest/v0/devices. Origin http://localhost:3501 is not allowed by Access-Control-Allow-Origin. (undefined, #undefined)
 CACHE MANIFEST
 
-# Time: Fri Dec 21 2012 12:31:25 GMT+1100 (EST)
+# Time: Fri Jan 04 2013 16:53:48 GMT+1100 (EST)
 # This manifest was created by confess.js, http://github.com/jamesgpearce/confess
 #
 # Retrieved URL: http://localhost:3501/#/

@@ -95,6 +95,7 @@ yeomanApp.service('DeviceService'
 			this.Devices = this.FilterUserDevices(blockDevices.devices);
 			this.Blocks = blockDevices.blocks;
 
+			console.log("DevicesLoaded", this.GetDeviceTypes());
 			$rootScope.$broadcast(UIEvents.DevicesLoaded, this.Devices);
 		},
 
@@ -250,6 +251,31 @@ yeomanApp.service('DeviceService'
 			return devices;
 		},
 
+
+		/**
+		 * Gets the available types that are in the devices array
+		 * @param {array} devicesArray Optional devices array to use
+		 */
+		GetDeviceTypes: function(devicesArray) {
+			var deviceTypes = [];
+
+			if (!devicesArray) {
+				devicesArray = this.Devices;
+			}
+
+			if (devicesArray) {
+				for (var i=0; i<devicesArray.length; i++) {
+					var device = devicesArray[i];
+					var deviceType = device.Options.type;
+					var existingTypeIndex = deviceTypes.indexOf(deviceType);
+					if (existingTypeIndex < 0) {
+						deviceTypes.push(deviceType);
+					}
+				}
+			}
+
+			return deviceTypes;
+		},
 
 		/**
 		 * Finds devices that are of the specified mode

@@ -4,34 +4,40 @@ yeomanApp.controller('ExistingDevicesCtrl'
   , ['$scope', '$rootScope', 'UIEvents', 'NewButtonService', 'DeviceService'
   , function($scope, $rootScope, UIEvents, NewButtonService, DeviceService) {
 
-    $scope.DeviceType = NewButtonService.Type;
+    $scope.DeviceTypes = NewButtonService.Types;
     $scope.ExistingDevices = [];
-
+    $scope.ConfigurePage = "/";
 
     /**
      * This route requires a $scope.DeviceType to be set. If none then redirect user
      * back to selectButton page
      **/
-    $scope.CheckDeviceType = function() {
-      if ($scope.DeviceType === '') {
+    $scope.CheckDeviceTypes = function() {
+      if ($scope.DeviceTypes.length === 0) {
         $scope.setRoute('/selectButton');
       }
     };
 
-    $scope.CheckDeviceType();
+    $scope.CheckDeviceTypes();
 
     /**
      * Loads the users devices to the UI
      */
     $scope.LoadDevices = function() {
-      if ($scope.DeviceType) {
-        if ($scope.DeviceType === 'rf433-button') {
-          $scope.ExistingDevices = DeviceService.GetDeviceByType('rf433');
+      $scope.ExistingDevices = [];
+      for (var i=0; i<$scope.DeviceTypes.length; i++) {
+        var deviceType = $scope.DeviceTypes[i];
+        if (deviceType === 'rf433-button') {
+          $scope.ExistingDevices = $scope.ExistingDevices.concat(DeviceService.GetDeviceByType('rf433'));
         } else {
-          $scope.ExistingDevices = DeviceService.GetDeviceByType($scope.DeviceType);
+          $scope.ExistingDevices = $scope.ExistingDevices.concat(DeviceService.GetDeviceByType(deviceType));
+
         }
-        $scope.SmartCheck();
+        console.log("Loading devices", deviceType);
       }
+      console.log("Devices Loaded");
+      $scope.SmartCheck();
+
     };
 
     /**
@@ -43,7 +49,7 @@ yeomanApp.controller('ExistingDevicesCtrl'
         var defaultDevice = $scope.ExistingDevices[0];
         $scope.UseDevice(defaultDevice);
       } else if ($scope.ExistingDevices.length === 0) {
-        
+
         // $scope.setRoute('/selectButton');
       }
     };
@@ -55,8 +61,10 @@ yeomanApp.controller('ExistingDevicesCtrl'
     $scope.UseDevice = function(device) {
       NewButtonService.Button.SetDevice(device);
 
+      var deviceType = $scope.DeviceTypes[0];
+
       // TODO: Determine how to configure the new device
-      switch ($scope.DeviceType) {
+      switch (deviceType) {
         case "rf433":
           $scope.setRoute('/configureSocket');
           break;
@@ -64,6 +72,7 @@ yeomanApp.controller('ExistingDevicesCtrl'
           $scope.setRoute('/configureRfButton');
           break;
         case "rgbled":
+        case "rgbled8":
           $scope.setRoute('/configureLed');
           break;
         case "relay":

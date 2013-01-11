@@ -5,7 +5,7 @@ yeomanApp.controller('HeaderCtrl'
   , function($scope, $rootScope, $location, UIEvents) {
 
     $scope.ConfigureMode = false;
-
+    $scope.HasButtons = false;
 
     /**
      * Determines if the current location is the main homepage
@@ -26,6 +26,11 @@ yeomanApp.controller('HeaderCtrl'
 
     $rootScope.$on(UIEvents.SetConfigureMode, function(event, configureMode) {
       $scope.ConfigureMode = configureMode;
+    });
+
+
+    $rootScope.$on(UIEvents.HasButtons, function(event, hasButtons) {
+      $scope.HasButtons = hasButtons;
     });
 
     

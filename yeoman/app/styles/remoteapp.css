@@ -4672,6 +4672,35 @@ input.ng-invalid {
   border-color: #e9352f;
   border-width: 1px; }
 
+.alert-box.help-box {
+  text-shadow: none;
+  background: #e6da70;
+  border-top: 1px solid #dccb38;
+  border-bottom: 1px solid #bfaf22;
+  border-left: none;
+  border-right: none;
+  color: #826717; }
+  .alert-box.help-box a {
+    font-family: 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
+    color: #f5f0c7;
+    background-color: #ba9421;
+    border-color: #8f7219;
+    font-weight: bold; }
+
+.getting-started {
+  border-color: transparent !important;
+  background: transparent !important;
+  color: #444; }
+  .getting-started h1, .getting-started h2, .getting-started h3, .getting-started h4, .getting-started h5, .getting-started h6 {
+    text-shadow: 1px 1px 0 #eeeeee;
+    font-size: 130%;
+    margin-bottom: 10px; }
+    .getting-started h1 img, .getting-started h2 img, .getting-started h3 img, .getting-started h4 img, .getting-started h5 img, .getting-started h6 img {
+      vertical-align: baseline; }
+  .getting-started ol li, .getting-started ul li {
+    text-shadow: 1px 1px 0 #eeeeee;
+    color: #444; }
+
 header {
   position: fixed;
   width: 100%;
@@ -4693,6 +4722,13 @@ header {
     top: 0px;
     right: 0px;
     color: white; }
+
+.button {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  transition: none; }
 
 .add-new {
   margin-bottom: 20px; }
@@ -4803,8 +4839,17 @@ h1, h2, h3, h4, h5, h6 {
   h1.subheader, h2.subheader, h3.subheader, h4.subheader, h5.subheader, h6.subheader {
     font-weight: 100; }
 
+html {
+  background: #aaa; }
+
 body {
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #aaaaaa));
+  background-image: -webkit-linear-gradient(#eeeeee, #aaaaaa);
+  background-image: -moz-linear-gradient(#eeeeee, #aaaaaa);
+  background-image: -o-linear-gradient(#eeeeee, #aaaaaa);
+  background-image: -ms-linear-gradient(#eeeeee, #aaaaaa);
+  background-image: linear-gradient(#eeeeee, #aaaaaa); }
 
 a.button {
   color: white; }

@@ -17,7 +17,6 @@ yeomanApp.controller('SelectButtonCtrl'
 
     };
 
-
     $scope.CreateNewButton = function() {
       NewButtonService.Reset();
     };

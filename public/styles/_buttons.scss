@@ -1,4 +1,8 @@
 
+.button {
+  @include transition(none);
+}
+
 .add-new {
   margin-bottom: 20px;
 }

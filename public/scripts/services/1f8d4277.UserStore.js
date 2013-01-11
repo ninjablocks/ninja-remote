@@ -144,6 +144,9 @@ yeomanApp.factory('UserStore'
           }
         }
 
+        var hasButtons = buttons.length > 0;
+        $rootScope.$broadcast(UIEvents.HasButtons, hasButtons);
+
         return buttons;
       }
 

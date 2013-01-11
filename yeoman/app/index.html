@@ -52,7 +52,7 @@
                     <li class="name">
                         <h1 ng-click="setRoute('/')"><a href="#">Ninja Remote</a></h1>
                     </li>
-                    <li class="toggle-edit">
+                    <li class="toggle-edit" ng-show="HasButtons">
                         <a ng-show="LocationIsHome() && !ConfigureMode" ng-click="SetConfigureMode(true)" class="configure">Configure</a>
                         <a ng-show="LocationIsHome() && ConfigureMode" ng-click="SetConfigureMode(false)" class="configure">Finish</a>
                     </li>

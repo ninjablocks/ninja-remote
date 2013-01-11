@@ -58,6 +58,8 @@ yeomanApp.service('UIEvents', function() {
         ButtonRemoved:          'ButtonRemoved',
         ButtonRemoveFailed:     'ButtonRemoteFailed',
 
+        HasButtons:             'HasButtons',
+
         SetDeviceType:          'SetDeviceType',
 
         ServiceUpdated:         'ServiceUpdated'

@@ -40,6 +40,13 @@ yeomanApp.controller('MainCtrl'
       // console.log('UserStore.Data.Buttons: changed', $scope.Buttons);
     });
 
+    // Watch the Button array
+    $scope.$watch('Buttons', function() {
+      if ($scope.Buttons.length === 0) {
+        $scope.$broadcast(UIEvents.SetConfigureMode, true);
+      }
+    });
+
     $scope.$on(UIEvents.SetConfigureMode, function(event, modeSwitch) {
       $scope.ConfigureMode = modeSwitch;
     });

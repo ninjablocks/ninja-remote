@@ -9,7 +9,7 @@ yeomanApp.controller('ConfigureLedCtrl'
      */
     $rootScope.$broadcast(UIEvents.SetConfigureMode, false);
 
-
+    $scope.Device = NewButtonService.Button.GetDevice();
     $scope.ButtonName = NewButtonService.Button.Options.name;
     $scope.ButtonValue = NewButtonService.Button.Options.value1;
 

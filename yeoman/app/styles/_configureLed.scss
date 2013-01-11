@@ -1,6 +1,11 @@
 
 .configure-led {
  
+canvas {
+  display: block;
+  margin: 0 auto;
+}
+
  .colors {
   .button {
     background-color: hsl(0, 0%, 50%);

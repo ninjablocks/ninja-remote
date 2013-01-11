@@ -43,7 +43,8 @@ yeomanApp.controller('ExistingDevicesCtrl'
         var defaultDevice = $scope.ExistingDevices[0];
         $scope.UseDevice(defaultDevice);
       } else if ($scope.ExistingDevices.length === 0) {
-        $scope.setRoute('/selectButton');
+        
+        // $scope.setRoute('/selectButton');
       }
     };
 

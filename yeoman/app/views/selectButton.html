@@ -2,10 +2,10 @@
 <div class="twelve columns">
   <ul class="pricing-table">
     <li class="title" >Select Button Type</li>
-    <li class="price" ng-click="setExistingDeviceType('rf433')">Socket</li>
-    <li class="price" ng-click="setExistingDeviceType('rf433-button')">RF Button</li>
-    <li class="price" ng-click="setExistingDeviceType('rgbled')">RGB Light</li>
-    <li class="price" ng-click="setExistingDeviceType('relay')">Relay</li>
+    <li class="price" ng-click="setExistingDeviceType('rf433')" ng-show="GetDeviceByType('rf433')">Socket</li>
+    <li class="price" ng-click="setExistingDeviceType('rf433-button')" ng-show="GetDeviceByType('rf433')">RF Button</li>
+    <li class="price" ng-click="setExistingDeviceType('rgbled')" ng-show="GetDeviceByType('rgbled')">RGB Light</li>
+    <li class="price" ng-click="setExistingDeviceType('relay')" ng-show="GetDeviceByType('relay')">Relay</li>
   </ul>
 
   <a class="button alert" ng-click="setRoute('/')">Cancel</a>

@@ -24,7 +24,7 @@ yeomanApp.factory('UserStore'
           if (callback) {
             callback(response);
           }
-          console.log("GetData response", this.Data);
+          if (DEBUG) console.log("GetData response", this.Data);
         }.bind(this));
       },
 
@@ -77,7 +77,7 @@ yeomanApp.factory('UserStore'
           var existingButton = this.GetButtonConfig(buttonConfig.id);
           var existingIndex = this.Data.Buttons.indexOf(existingButton);
           this.Data.Buttons[existingIndex] = buttonConfig;
-          console.log("Button Config Updated:", buttonConfig);
+          if (DEBUG) console.log("Button Config Updated:", buttonConfig);
         } else {
           // Create New Button
           buttonConfig.id = Guid();
@@ -85,7 +85,7 @@ yeomanApp.factory('UserStore'
           if (!this.Data || !this.Data.Buttons) {
             this.InitData();
           }
-          console.log("DataStore:", this.Data, this.Data.Buttons);
+          if (DEBUG) console.log("DataStore:", this.Data, this.Data.Buttons);
           this.Data.Buttons.push(buttonConfig);
         }
 
@@ -121,7 +121,7 @@ yeomanApp.factory('UserStore'
         var buttonConfig = this.GetButtonConfig(button.Options.id);
         var removeIndex = this.Data.Buttons.indexOf(buttonConfig);
         this.Data.Buttons.splice(removeIndex, 1);
-        console.log("Removing Button", removeIndex, this.Data.Buttons);
+        if (DEBUG) console.log("Removing Button", removeIndex, this.Data.Buttons);
         $rootScope.$broadcast(UIEvents.ButtonRemoved, button);
 
         this.Save();

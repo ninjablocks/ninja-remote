@@ -37,6 +37,10 @@ yeomanApp.service('UIEvents', function() {
         UserInfoLoadFailed:     'UserInfoLoadFailed',
 
 
+        UserStoreLoading:       'UserStoreLoading',
+        UserStoreLoaded:        'UserStoreLoaded',
+        UserStoreLoadFailed:    'UserStoreLoadFailed',
+
         /**
          * DEVICES
          */

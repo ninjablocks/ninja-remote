@@ -56,4 +56,9 @@ yeomanApp.controller('MainCtrl'
       // console.log("Post-Removed", $scope.Buttons);
     });
 
+
+    $rootScope.$on(UIEvents.UserStoreLoaded, function(event) {
+      $scope.$apply();
+    })
+
 }]);

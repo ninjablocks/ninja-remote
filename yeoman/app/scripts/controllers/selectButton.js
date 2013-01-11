@@ -1,8 +1,8 @@
 'use strict';
 
 yeomanApp.controller('SelectButtonCtrl'
-  , ['$scope', '$rootScope', 'UIEvents', 'NewButtonService'
-  , function($scope, $rootScope, UIEvents, NewButtonService) {
+  , ['$scope', '$rootScope', 'UIEvents', 'NewButtonService', 'DeviceService'
+  , function($scope, $rootScope, UIEvents, NewButtonService, DeviceService) {
 
     /**
      * Sets the existing DeviceType for loading into the ExistingDevices view
@@ -17,10 +17,23 @@ yeomanApp.controller('SelectButtonCtrl'
 
     };
 
+    /**
+     * Checks to see if there are devices of the specified type
+     * @param {[type]} type [description]
+     */
+    $scope.GetDeviceByType = function(type) {
+      var typeDevices = DeviceService.GetDeviceByType(type);
+      return typeDevices.length > 0;
+    };
+
     $scope.CreateNewButton = function() {
       NewButtonService.Reset();
     };
 
     $rootScope.$broadcast(UIEvents.SetConfigureMode, false);
+
+    $rootScope.$on(UIEvents.DevicesLoaded, function(event) {
+      $scope.$apply();
+    });
 
 }]);

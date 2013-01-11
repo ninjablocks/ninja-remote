@@ -25,10 +25,10 @@ yeomanApp.service('PusherService'
 
 		pusherChannel = pusher.subscribe(userData.pusherChannel);
 
-		console.log("Pusher Channel:", pusherChannel);
+		// console.log("Pusher Channel:", pusherChannel);
 
 		pusher.log = function(message) {
-			console.log(message);
+			if (DEBUG) console.log(message);
 		};
 
 		// Create the channel event handlers
@@ -38,7 +38,7 @@ yeomanApp.service('PusherService'
 		};
 
 		var pusherData_Handler = function(data) {
-			console.log("PusherData:", data);
+			// console.log("PusherData:", data);
 			$rootScope.$broadcast(UIEvents.PusherData, data);
 		};
 

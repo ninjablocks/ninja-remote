@@ -7,11 +7,14 @@ yeomanApp.factory('NewButtonService'
   var newButton = {
     Type: '',
 
+    Types: [],
+
     Button: new Button(),
 
     Reset: function() {
       this.Button = new Button();
       this.Type = '';
+      this.Types = [];
     }
 
   };

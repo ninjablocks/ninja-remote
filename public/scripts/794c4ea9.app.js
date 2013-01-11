@@ -1,5 +1,7 @@
 'use strict';
 
+var DEBUG = true;
+
 var yeomanApp = angular.module('yeomanApp', [])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
@@ -71,7 +73,8 @@ yeomanApp.run([
    * Automatically get the user store
    */
   UserStore.GetData(function(data) {
-    console.log("UserStore:",data);
+    if (DEBUG) console.log("UserStore:",data);
+    $rootScope.$broadcast(UIEvents.UserStoreLoaded);
 
   });
   DeviceService.LoadUserDevices(function() {

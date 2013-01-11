@@ -38,7 +38,7 @@ yeomanApp.controller('ConfigureSocketCtrl'
               $scope[$scope.ListenTarget] = detectedValue.DA;
               $scope.Stop();
             }
-            console.log($scope.ListenEntries);
+            if (DEBUG) console.log($scope.ListenEntries);
 
           } else {
             // New

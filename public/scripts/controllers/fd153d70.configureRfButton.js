@@ -37,7 +37,7 @@ yeomanApp.controller('ConfigureRfButtonCtrl'
               $scope.ButtonValue = detectedValue.DA;
               $scope.Stop();
             }
-            console.log($scope.ListenEntries);
+            if (DEBUG) console.log($scope.ListenEntries);
 
           } else {
             // New

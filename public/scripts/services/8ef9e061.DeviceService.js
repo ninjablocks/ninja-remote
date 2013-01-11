@@ -242,7 +242,7 @@ yeomanApp.service('DeviceService'
 			if (devicesArray) {
 				for(var i=0; i<devicesArray.length; i++) {
 					var device = devicesArray[i];
-					if (device.Options.type === type && parseInt(device.Options.deviceId, 10) !== 999) {
+					if (device.Options.type === type && device.Options.id !== 999) {
 						devices.push(device);
 					}
 				}

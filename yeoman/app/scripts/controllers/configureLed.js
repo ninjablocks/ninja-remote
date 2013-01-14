@@ -28,8 +28,8 @@ yeomanApp.controller('ConfigureLedCtrl'
      * @param {[type]} hexColor [description]
      */
     $scope.SetColor = function(hexColor) {
-      $scope.ButtonValue = hexColor;
-      NewButtonService.Button.GetDevice().Options.value = hexColor;
+      // $scope.ButtonValue = hexColor;
+      NewButtonService.Button.Options.value1 = hexColor;
     };
 
     /**
@@ -56,6 +56,17 @@ yeomanApp.controller('ConfigureLedCtrl'
 
     };
 
+    $rootScope.$on(UIEvents.SetLEDColor, function(event, hex) {
+      $scope.$apply(function() {
+        $scope.ButtonValue = hex;
+      });
+    });
+
+
+    $scope.$watch('NewButtonService.Button.Options.value1', function() {
+      console.log("Watching NewButton Value", NewButtonService.Button.Options.value1);
+      $scope.ButtonValue = NewButtonService.Button.Options.value1;
+    });
 
 }]);
 

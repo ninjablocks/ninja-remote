@@ -4784,6 +4784,24 @@ header {
   float: right;
   margin: 0; }
 
+.configure-led .colorPicker {
+  display: block;
+  margin: 0 auto 10px; }
+.configure-led .value {
+  position: relative; }
+  .configure-led .value .current {
+    -webkit-border-radius: 20em;
+    -moz-border-radius: 20em;
+    -ms-border-radius: 20em;
+    -o-border-radius: 20em;
+    border-radius: 20em;
+    width: 50px;
+    height: 50px;
+    margin: -25px 0 0 -25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid #AAA; }
 .configure-led .colors .button {
   background-color: gray;
   border-color: #666666;

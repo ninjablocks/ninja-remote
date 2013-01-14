@@ -1,8 +1,8 @@
 'use strict';
 
-yeomanApp.directive('deviceLedPicker16k'
-  , [
-  function() {
+yeomanApp.directive('deviceLedPicker'
+  , [ '$rootScope', 'NewButtonService', 'UIEvents'
+  , function($rootScope, NewButtonService, UIEvents) {
 
 
 function generateColorArray(numColors) {
@@ -98,13 +98,15 @@ function rgbToHex(r, g, b) {
       var canvasId = 'colorWheel_' + scope.Device.GUID();
       canvas.attr({ id: canvasId});
 
+
+
       var colors = generateColorArray(16);
       drawColourWheel(element[0], 70, 30, colors);
 
       /**
        * Set the device LED colour when clicking
        */
-      element.click(function(e) {
+      element.on("click", function(e) {
           var pos = findPos(this);
           var x = e.pageX - pos.x;
           var y = e.pageY - pos.y;
@@ -112,10 +114,12 @@ function rgbToHex(r, g, b) {
           var c = this.getContext('2d');
           var p = c.getImageData(x, y, 1, 1).data;
           var hex = ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
+          hex = hex.toUpperCase();
 
 
           // Choose the color
-          scope.ButtonValue = hex.toUpperCase();
+          console.log("Setting Color:", hex)
+          $rootScope.$broadcast(UIEvents.SetLEDColor, hex);
       });
     }
   };

@@ -36,7 +36,7 @@ yeomanApp.service('UIEvents', function() {
         UserInfoLoaded:         'UserInfoLoaded',
         UserInfoLoadFailed:     'UserInfoLoadFailed',
 
-
+        // User Store
         UserStoreLoading:       'UserStoreLoading',
         UserStoreLoaded:        'UserStoreLoaded',
         UserStoreLoadFailed:    'UserStoreLoadFailed',
@@ -65,9 +65,9 @@ yeomanApp.service('UIEvents', function() {
         HasButtons:             'HasButtons',
 
         SetDeviceType:          'SetDeviceType',
+        SetLEDColor:            'SetLEDColor',
 
         ServiceUpdated:         'ServiceUpdated'
-
 
 
     };

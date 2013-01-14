@@ -95,7 +95,7 @@ yeomanApp.service('DeviceService'
 			this.Devices = this.FilterUserDevices(blockDevices.devices);
 			this.Blocks = blockDevices.blocks;
 
-			console.log("DevicesLoaded", this.GetDeviceTypes());
+			if (DEBUG) console.log("DevicesLoaded", this.GetDeviceTypes());
 			$rootScope.$broadcast(UIEvents.DevicesLoaded, this.Devices);
 		},
 
@@ -242,7 +242,7 @@ yeomanApp.service('DeviceService'
 			if (devicesArray) {
 				for(var i=0; i<devicesArray.length; i++) {
 					var device = devicesArray[i];
-					if (device.Options.type === type && device.Options.id !== 999) {
+					if (device.Options.type === type && parseInt(device.Options.deviceId, 10) !== 999) {
 						devices.push(device);
 					}
 				}

@@ -9,7 +9,7 @@ yeomanApp.controller('ConfigureLedCtrl'
      */
     $rootScope.$broadcast(UIEvents.SetConfigureMode, false);
 
-
+    $scope.Device = NewButtonService.Button.GetDevice();
     $scope.ButtonName = NewButtonService.Button.Options.name;
     $scope.ButtonValue = NewButtonService.Button.Options.value1;
 
@@ -28,16 +28,16 @@ yeomanApp.controller('ConfigureLedCtrl'
      * @param {[type]} hexColor [description]
      */
     $scope.SetColor = function(hexColor) {
-      $scope.ButtonValue = hexColor;
-      NewButtonService.Button.GetDevice().Options.value = hexColor;
+      // $scope.ButtonValue = hexColor;
+      NewButtonService.Button.Options.value1 = hexColor;
     };
 
     /**
      * Test the button
      */
     $scope.Test = function() {
-      NewButtonService.Button.GetDevice().Emit(NewButtonService.Button.GetDevice().Options.value);
-      console.log($scope.configureLed);
+      NewButtonService.Button.GetDevice().Emit($scope.ButtonValue);
+      if (DEBUG) console.log($scope.configureLed);
     };
 
 
@@ -56,6 +56,17 @@ yeomanApp.controller('ConfigureLedCtrl'
 
     };
 
+    $rootScope.$on(UIEvents.SetLEDColor, function(event, hex) {
+      $scope.$apply(function() {
+        $scope.ButtonValue = hex;
+      });
+    });
+
+
+    $scope.$watch('NewButtonService.Button.Options.value1', function() {
+      if (DEBUG) console.log("Watching NewButton Value", NewButtonService.Button.Options.value1);
+      $scope.ButtonValue = NewButtonService.Button.Options.value1;
+    });
 
 }]);
 

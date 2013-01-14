@@ -7,19 +7,17 @@
         Please name this button
       </div>
       <input type="text" placeholder="Name This Button" ng-model="ButtonName" required>
-      <input type="hidden" ng-model="ButtonValue" required>
       <!-- <h5 class="subheader">Select a colour</h5> -->
       <div class="alert-box " ng-show="!configureLed.$valid && !ButtonValue">Select a colour</div>
-      <ul class="block-grid two-up colors">
-        <li><a selectable data-color="FF0000" class="button red">Red</a></li>
-        <li><a selectable data-color="FFFF00" class="button yellow">Yellow</a></li>
-        <li><a selectable data-color="0000FF" class="button blue">Blue</a></li>
-        <li><a selectable data-color="FF00FF" class="button purple">Purple</a></li>
-        <li><a selectable data-color="00FF00" class="button green">Green</a></li>
-        <li><a selectable data-color="00FFFF" class="button cyan">Cyan</a></li>
-        <li><a selectable data-color="FFFFFF" class="button white">White</a></li>
-        <li><a selectable data-color="000000" class="button black">Black</a></li>
-      </ul>
+
+      <input name="buttonValue" id="buttonValue" type="hidden" ng-model="ButtonValue" ng-show="configureLed.buttonValue.$error.required" required>
+
+      <div class="value">
+        <canvas width="150" height="150" class="colorPicker" device-Led-Picker></canvas>
+        <div class="current" style="background-color: #{{ButtonValue}}"></div>
+      </div>
+
+
 
       <a class="button" ng-click="Test()">Test</a>
       

@@ -1,6 +1,30 @@
 
 .configure-led {
  
+.colorPicker {
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.value {
+  position: relative;
+  
+  $LEDSize: 50px;
+
+  .current {
+    @include border-radius(20em);
+    width: $LEDSize;
+    height: $LEDSize;
+    margin: (-$LEDSize/2) 0 0 (-$LEDSize/2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid #AAA;
+  }
+}
+
+
+
  .colors {
   .button {
     background-color: hsl(0, 0%, 50%);

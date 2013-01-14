@@ -57,7 +57,7 @@ function drawColourWheel(canvas, outsideRadius, insideRadius, colors) {
       ctx.fill();
     }
   } else {
-    console.log("No context");
+    if (DEBUG) console.log("No context");
   }
 }
 
@@ -98,10 +98,20 @@ function rgbToHex(r, g, b) {
       var canvasId = 'colorWheel_' + scope.Device.GUID();
       canvas.attr({ id: canvasId});
 
-
-
+      var deviceType = NewButtonService.Button.GetDevice().Options.type;
       var colors = generateColorArray(16);
+      switch(deviceType) {
+        case "rgbled":
+          colors = generateColorArray(16);
+          break;
+        case "rgbled8":
+          colors = ['#FF0000', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF', '#FF00FF', '#FFFFFF', '#000000'];
+          break;
+      }
+
       drawColourWheel(element[0], 70, 30, colors);
+
+      console.log("DeviceType", NewButtonService.Button.GetDevice().Options.type);
 
       /**
        * Set the device LED colour when clicking
@@ -118,7 +128,7 @@ function rgbToHex(r, g, b) {
 
 
           // Choose the color
-          console.log("Setting Color:", hex)
+          if (DEBUG) console.log("Setting Color:", hex)
           $rootScope.$broadcast(UIEvents.SetLEDColor, hex);
       });
     }

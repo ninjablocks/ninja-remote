@@ -14,11 +14,11 @@
 
 @import "header";
 @import "container";
-@import "buttons";
 @import "existingDevices";
 @import "configureSocket";
 @import "configureLed";
 
+@import "buttons";
 @import "media";
 
 h1,h2,h3,h4,h5,h6 { 
@@ -38,9 +38,6 @@ html {
 body {
   font-family: 'Open Sans', sans-serif;
   @include background-image(linear-gradient(#eee, #aaa));
-}
-a.button {
-  color: white;
 }
 
 .panel {

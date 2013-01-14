@@ -36,8 +36,8 @@ yeomanApp.controller('ConfigureLedCtrl'
      * Test the button
      */
     $scope.Test = function() {
-      NewButtonService.Button.GetDevice().Emit(NewButtonService.Button.GetDevice().Options.value);
-      console.log($scope.configureLed);
+      NewButtonService.Button.GetDevice().Emit($scope.ButtonValue);
+      if (DEBUG) console.log($scope.configureLed);
     };
 
 
@@ -64,7 +64,7 @@ yeomanApp.controller('ConfigureLedCtrl'
 
 
     $scope.$watch('NewButtonService.Button.Options.value1', function() {
-      console.log("Watching NewButton Value", NewButtonService.Button.Options.value1);
+      if (DEBUG) console.log("Watching NewButton Value", NewButtonService.Button.Options.value1);
       $scope.ButtonValue = NewButtonService.Button.Options.value1;
     });
 

@@ -33,9 +33,9 @@ yeomanApp.controller('ExistingDevicesCtrl'
           $scope.ExistingDevices = $scope.ExistingDevices.concat(DeviceService.GetDeviceByType(deviceType));
 
         }
-        console.log("Loading devices", deviceType);
+        if (DEBUG) console.log("Loading devices", deviceType);
       }
-      console.log("Devices Loaded");
+      if (DEBUG) console.log("Devices Loaded");
       $scope.SmartCheck();
 
     };

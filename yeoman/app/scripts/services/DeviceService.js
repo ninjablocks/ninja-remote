@@ -95,7 +95,7 @@ yeomanApp.service('DeviceService'
 			this.Devices = this.FilterUserDevices(blockDevices.devices);
 			this.Blocks = blockDevices.blocks;
 
-			console.log("DevicesLoaded", this.GetDeviceTypes());
+			if (DEBUG) console.log("DevicesLoaded", this.GetDeviceTypes());
 			$rootScope.$broadcast(UIEvents.DevicesLoaded, this.Devices);
 		},
 

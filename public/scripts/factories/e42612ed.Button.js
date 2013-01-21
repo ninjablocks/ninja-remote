@@ -71,7 +71,7 @@ yeomanApp.factory('Button',
        * Determines which value to actuate to
        */
       var GetActuateValue = function() {
-        if (this.Options.value1 && this.Options.value2) {
+        if (this.IsTwoState()) {
           // Toggle between the two values
           var value = this.Options[nextValue];
           if (nextValue == 'value1') {
@@ -84,6 +84,23 @@ yeomanApp.factory('Button',
         } else {
           return this.Options.value1;
         }
+      };
+
+      /**
+       * Determines if the button has two states
+       */
+      this.IsTwoState = function() {
+        return (this.Options.value1 && this.Options.value2);
+      };
+
+
+      /**
+       * Determines if the button is 'On'
+       */
+      this.IsOn = function() {
+        var isOn = (nextValue === 'value2');
+        console.log("IsOn", isOn);
+        return isOn;
       };
 
       this.Construct();

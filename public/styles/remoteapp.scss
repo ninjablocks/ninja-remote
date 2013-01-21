@@ -3,6 +3,7 @@
 
 
 @import "compass/css3";
+@import "jiggle";
 
 @import "normalize";
 @import "main";
@@ -21,23 +22,30 @@
 @import "buttons";
 @import "media";
 
+$backgroundTop: #777;
+$backgroundBottom: #444;
+
+
 h1,h2,h3,h4,h5,h6 { 
   margin: 0; 
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
+  color: #DDD;
+  @include text-shadow(-1px -1px 0px rgba(0,0,0,0.5));
   
   &.subheader {
     font-weight: 100;
+    color: #FFF;
   }
 }
 
 html {
-  background: #aaa;
+  background: $backgroundBottom;
 }
 
 body {
   font-family: 'Open Sans', sans-serif;
-  @include background-image(linear-gradient(#eee, #aaa));
+  @include background-image(linear-gradient($backgroundTop, $backgroundBottom));
 }
 
 .panel {

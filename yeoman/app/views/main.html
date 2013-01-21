@@ -13,7 +13,8 @@
         <div class="hit-area" ng-click="HandlePress(button)" ng-class="{jiggly:ConfigureMode}">
           <div class="dummy"></div>
           <div class="hit-button">
-            <div class="icon">◉</div>
+            <div class="icon icon-off icon-4x" ng-show="!ConfigureMode"></div>
+            <div class="icon icon-edit icon-4x" ng-show="ConfigureMode"></div>
           </div>
           <!--  <div class="button-bar actions four columns">
             
@@ -36,7 +37,7 @@
         <div class="hit-area">
           <div class="dummy"></div>
           <div class="hit-button">
-            <div class="icon">+</div>
+            <div class="icon icon-plus icon-3x"></div>
           </div>
         </div>
         <h5>Add New Button</h5>

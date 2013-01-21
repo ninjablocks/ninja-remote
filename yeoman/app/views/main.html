@@ -13,7 +13,7 @@
         <div class="hit-area" ng-click="HandlePress(button)" ng-class="{jiggly:ConfigureMode}">
           <div class="dummy"></div>
           <div class="hit-button">
-            <div class="icon"></div>
+            <div class="icon">◉</div>
           </div>
           <!--  <div class="button-bar actions four columns">
             
@@ -28,8 +28,8 @@
           </div> -->
 
 
-        </div>
         <a class="delete" ng-click="button.Delete()" ng-show="ConfigureMode">&times;</a>
+        </div>
         <h5 class="name">{{ button.Options.name }}</h5>
       </div>
       <a class="remote-button add" ng-click="setRoute('/selectButton')" ng-show="ConfigureMode">

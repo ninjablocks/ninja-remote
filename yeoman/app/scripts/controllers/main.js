@@ -21,7 +21,7 @@ yeomanApp.controller('MainCtrl'
         case Ninja.DeviceTypes.RGBLED:
         case "rgbled8":
           $scope.setRoute('/configureLed');
-          break; 
+          break;
         case Ninja.DeviceTypes.RELAY:
           $scope.setRoute('/configureRelay');
           break;

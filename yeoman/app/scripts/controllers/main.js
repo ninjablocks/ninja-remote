@@ -19,6 +19,7 @@ yeomanApp.controller('MainCtrl'
 
       switch (type) {
         case Ninja.DeviceTypes.RGBLED:
+        case "rgbled8":
           $scope.setRoute('/configureLed');
           break; 
         case Ninja.DeviceTypes.RELAY:
@@ -31,6 +32,14 @@ yeomanApp.controller('MainCtrl'
             $scope.setRoute('/configureSocket');
           }
           break;
+      }
+    };
+
+    $scope.HandlePress = function(button) {
+      if ($scope.ConfigureMode) {
+        $scope.EditButton(button);
+      } else {
+        button.Actuate();
       }
     };
 
@@ -59,6 +68,6 @@ yeomanApp.controller('MainCtrl'
 
     $rootScope.$on(UIEvents.UserStoreLoaded, function(event) {
       $scope.$apply();
-    })
+    });
 
 }]);

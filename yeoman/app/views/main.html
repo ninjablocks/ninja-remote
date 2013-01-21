@@ -1,23 +1,23 @@
 
 
-<div class="buttons">
+<div class="remote-buttons">
 
   <div class="row">
     <div class="twelve columns">
-      <a class="add-new button success" ng-click="setRoute('/selectButton')" ng-show="ConfigureMode">Add New Button</a>
 
       <div class="alert-box getting-started" ng-show="!Buttons.length">
         <h6>Create a button to get started</h6>
       </div>
 
-      <div class="panel clearfix remote-button" ng-repeat="button in Buttons" data-id="{{ button.Options.id }}">
-        <div class="row">
+      <div class="remote-button" ng-repeat="button in Buttons" data-id="{{ button.Options.id }}">
+        <div class="hit-area" ng-click="HandlePress(button)" ng-class="{jiggly:ConfigureMode}">
+          <div class="dummy"></div>
+          <div class="hit-button">
+            <div class="icon"></div>
+          </div>
+          <!--  <div class="button-bar actions four columns">
             
-          <h5 class="name eight columns">{{ button.Options.name }}</h5>
-
-          <div class="button-bar actions four columns">
-            
-            <ul class="button-group radius" ng-show="!ConfigureMode">
+           <ul class="button-group radius" ng-show="!ConfigureMode">
               <li><a class="button alert radius" ng-click="button.ActuateOff()" ng-show="button.HasValue(2)">Off</a></li>
               <li><a class="button success radius" ng-click="button.ActuateOn()" ng-show="button.HasValue(1)">On</a></li>
             </ul>
@@ -25,14 +25,22 @@
               <li><a class="button radius" ng-click="EditButton(button)">Edit</a></li>
             </ul>
             
-          </div>
+          </div> -->
 
-          <a class="delete" ng-click="button.Delete()" ng-show="ConfigureMode">&times;</a>
-          
+
         </div>
-        
-        
+        <a class="delete" ng-click="button.Delete()" ng-show="ConfigureMode">&times;</a>
+        <h5 class="name">{{ button.Options.name }}</h5>
       </div>
+      <a class="remote-button add" ng-click="setRoute('/selectButton')" ng-show="ConfigureMode">
+        <div class="hit-area">
+          <div class="dummy"></div>
+          <div class="hit-button">
+            <div class="icon">+</div>
+          </div>
+        </div>
+        <h5>Add New Button</h5>
+      </a>
     </div>
   </div>
 

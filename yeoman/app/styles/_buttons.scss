@@ -5,17 +5,68 @@ a.button {
   color: white;
 }
 
-.add-new {
-  margin-bottom: 20px;
+.remote-buttons {
+  padding-top: 15px;
 }
 
 .remote-button {
-  padding: 10px;
   position: relative;
   margin-bottom: 10px;
+  display: block;
+  width: 30%;
+  float: left;
+  margin-right: 3%;
+  cursor: pointer;
 
   h5 {
-    line-height: 2em;
+    display: block;
+    line-height: 1em;
+    font-size: 12px;
+    height: 12px;
+    overflow: hidden;
+    font-weight: bold;
+    text-align: center;
+    margin: 5px 0;
+    text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+
+  }
+
+
+  .hit-area {
+    position: relative;
+    
+    .dummy {
+      padding-top: 100%;
+    }
+
+    .hit-button {
+      @include border-radius(15%);
+      @include box-shadow(0 0 10px #333, inset 0px -20px 30px rgba(0,0,0,0.3));
+      padding: 10px;
+      background: rgba(0,0,0,0.4);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border: 4px solid rgba(255,255,255, 0.7);
+     
+    }
+
+    &.jiggly {
+      -webkit-animation: jiggle 0.18s infinite;
+      -moz-animation-duration: 0.18s;
+      -moz-animation-name: jiggle;
+      -moz-animation-iteration-count: infinite;
+      -webkit-transform: rotate(-1deg);
+      -moz-transform: rotate(-1deg);
+        
+      .hit-button {
+        @include box-shadow(0 0 10px hsl(33,51%,54%), inset 0px -20px 30px rgba(0,0,0,0.3));
+        border-color: hsl(33,50%,80%);
+      }
+    }
   }
 
   .button-group {
@@ -30,9 +81,60 @@ a.button {
     background: black;
     border: 2px solid white;
     color: white;
-    padding: 0 9px;
+    padding: 0 4px;
     font-weight: 800;
-    font-size: 20px;
+    font-size: 28px;
+    line-height: 25px;
   }
 
+
+
+  &:hover {
+    
+    .hit-area {
+      .hit-button {
+        @include box-shadow(0 0 10px #333, inset 0px 10px 30px rgba(0,0,0,0.3));
+        background: rgba(0,0,0,0.2);
+        // border-color: white;
+      }
+    }
+
+    h5 {
+      color: #DDD;
+    }
+  }
+
+
+  &.add {
+    color: rgba(255,255,255,0.7);
+    .hit-area {
+      .hit-button {
+        @include box-shadow(none);
+        background: rgba(0,0,0,0.4);
+        border: none;
+        
+        .icon {
+
+          display: inline-block;
+          font-size: 55px;
+          font-weight: 800;
+          text-align: center;
+          height: 100%;
+          position: absolute;
+          left: 50%;
+          margin-left: -14px;
+          top: 50%;
+          margin-top: -44px;
+        }
+      }
+    }
+
+    &:hover {
+      .hit-area {
+        .hit-button {
+          background: rgba(0,0,0,0.3);
+        }
+      }
+    }
+  }
 }

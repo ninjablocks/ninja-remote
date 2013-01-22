@@ -5,4 +5,7 @@ components/foundation/templates
 components/foundation/test
 components/foundation/marketing
 components/foundation/lib
-components/font-awesome
+components/font-awesome/css
+components/font-awesome/docs
+components/font-awesome/less
+components/font-awesome/sass

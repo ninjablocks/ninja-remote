@@ -9,7 +9,7 @@
         <h6>Create a button to get started</h6>
       </div>
 
-      <div class="remote-button" ng-repeat="button in Buttons" data-id="{{ button.Options.id }}" ng-class="{on:button.IsOn()}">
+      <div class="remote-button" ng-repeat="button in Buttons" data-id="{{ button.Options.id }}" ng-class="{on:button.IsOn(), local:button.IsLocal()}">
         <div class="hit-area" ng-click="HandlePress(button)" ng-class="{jiggly:ConfigureMode}">
           <div class="dummy"></div>
           <div class="hit-button">

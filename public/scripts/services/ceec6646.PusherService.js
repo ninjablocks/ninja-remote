@@ -38,7 +38,7 @@ yeomanApp.service('PusherService'
 		};
 
 		var pusherData_Handler = function(data) {
-			// console.log("PusherData:", data);
+			console.log("PusherData:", data);
 			$rootScope.$broadcast(UIEvents.PusherData, data);
 		};
 
@@ -69,6 +69,7 @@ yeomanApp.service('PusherService'
 		pusherChannel.bind('stream', pusherStream_Handler);
 		pusherChannel.bind('config', pusherConfig_Handler);
 
+		if (DEBUG) console.log("Pusher Listening");
 
 	});
 

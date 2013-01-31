@@ -14,6 +14,8 @@ yeomanApp.service('UIEvents', function() {
 
         ConfigureMode:          'ConfigureMode',
 
+        BlockIPUpdate:          'BlockIPUpdate',
+
         /**
          * User
          */

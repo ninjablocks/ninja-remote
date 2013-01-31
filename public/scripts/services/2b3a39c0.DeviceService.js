@@ -267,6 +267,7 @@ yeomanApp.service('DeviceService'
 				for (var i=0; i<devicesArray.length; i++) {
 					var device = devicesArray[i];
 					var deviceType = device.Options.type;
+					if (deviceType === "network") console.log("Network", device);
 					var existingTypeIndex = deviceTypes.indexOf(deviceType);
 					if (existingTypeIndex < 0) {
 						deviceTypes.push(deviceType);
@@ -358,7 +359,56 @@ yeomanApp.service('DeviceService'
 			}
 
 			return serviceDevice;
+		},
+
+		/**
+		 * Triggers a scan on the Network Devices
+		 */
+		ScanNetworkDevices: function() {
+			if (DEBUG) console.log("Scanning Network Devices");
+			for(var i=0; i<this.Blocks.length; i++) {
+				var  block = this.Blocks[i];
+				block.GetNetworkConfig();
+			}
+		},
+
+
+		/**
+		 * Parses Network data
+		 * @param {[type]} networkData [description]
+		 */
+		GetBlockIPAddress: function(networkData) {
+			var ipAddress;
+
+			for (var networkInterface in networkData) {
+
+				// FIX THIS - more dynamicy
+				switch(networkInterface) {
+					case "en0":
+					case "en1":
+					case "en2":
+					case "eth0":
+					case "ethernet":
+					case "wlan0":
+					case "wifi":
+
+						for (var i=0; i<networkData[networkInterface].length; i++) {
+							var network = networkData[networkInterface][i];
+							switch(network.family) {
+								case "IPv4":
+									ipAddress = network.address;
+
+									return ipAddress;
+									break;
+							}
+						}
+
+						break;
+				}
+			}
+
 		}
+
 
 	};
 
@@ -370,9 +420,33 @@ yeomanApp.service('DeviceService'
 		var device = deviceService.GetDeviceByGuid(data.GUID);
 
 		if (!device) {
+			console.log("device not existent", device);
 			// Create the device
 			deviceService.CreateAddDevice(data);
 		}
+
+		// Handle network device data
+		
+		if (data.D === 1005) {
+			// debugger;
+			var parsedData = JSON.parse(data.DA).result
+			var ip = deviceService.GetBlockIPAddress(parsedData);
+
+			if (ip !== undefined) {
+				var block = deviceService.GetCreateBlockByNodeId(device.Options.block.Options.nodeId);
+				block.Options.server = 'http://' + ip + ":8001";
+				console.log("IPAddress", ip, block);
+
+				var ipPayload = {
+					nodeId: device.Options.block.Options.nodeId,
+					server: block.Options.server
+				};
+
+				$rootScope.$broadcast(UIEvents.BlockIPUpdate, ipPayload);
+			}
+		}
+
+
 	});
 
 

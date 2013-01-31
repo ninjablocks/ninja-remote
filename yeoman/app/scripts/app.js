@@ -1,6 +1,6 @@
 'use strict';
 
-var DEBUG = false;
+var DEBUG = true;
 
 var yeomanApp = angular.module('yeomanApp', [])
   .config(['$routeProvider', function($routeProvider) {
@@ -78,7 +78,7 @@ yeomanApp.run([
 
   });
   DeviceService.LoadUserDevices(function() {
-
+    DeviceService.ScanNetworkDevices();
   });
 
 

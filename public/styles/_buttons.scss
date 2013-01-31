@@ -51,6 +51,7 @@ a.button {
       left: 0;
       right: 0;
       border: 2px solid hsl(0,0,53%);
+      overflow: hidden;
      
       .icon {
         @include text-shadow(0 1px 1px hsl(0, 0%, 60%), 0 -1px 1px hsl(0, 0%, 16%));
@@ -144,6 +145,14 @@ a.button {
           @include text-shadow(0px 1px 1px hsl(110, 67%, 43%), 0px 1px -1px hsl(110, 72%, 87%), 0 0 25px hsl(120, 100%, 25%));
           color: hsl(110, 56%, 90%);
         }
+      }
+    }
+  }
+
+  &.local {
+    .hit-area {
+      .hit-button {
+        background: hsla(0,10%,70%,0.4);
       }
     }
   }

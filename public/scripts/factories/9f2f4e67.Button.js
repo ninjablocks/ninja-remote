@@ -4,6 +4,7 @@ yeomanApp.factory('Button',
     return function(options) {
 
       this.Options = {
+        type: '',
         name: '',
         color: '',
         device: null,
@@ -54,8 +55,21 @@ yeomanApp.factory('Button',
       /**
        * Actuate the Button. Abstracts the value switching if more than 1 value is applied
        */
-      this.Actuate = function() {
-        this.Options.device.Emit(GetActuateValue.call(this));
+      this.Actuate = function(actuateValue) {
+
+        if (!actuateValue) actuateValue = GetActuateValue.call(this);
+
+        this.Options.device.Emit(actuateValue, function(error, response) {
+          console.log("Emit");
+          if (error instanceof Error) {
+            if (this.IsLocal()) {
+              console.log("Back to cloud");
+              this.GetDevice().Options.block.Options.server = null;
+              this.Actuate(actuateValue);
+            }
+          }
+
+        }.bind(this));
       };
 
       this.ActuateOn = function() {
@@ -100,9 +114,30 @@ yeomanApp.factory('Button',
        */
       this.IsOn = function() {
         var isOn = (nextValue === 'value2');
-        console.log("IsOn", isOn);
+        // console.log("IsOn", isOn);
         return isOn;
       };
+
+      this.IsLocal = function() {
+        var device = this.GetDevice();
+        var block = device.Options.block;
+        
+        if (device && block) {
+          // console.log("Local", device.Options.block.Options.server);
+          return device.Options.block.Options.server;
+        } else {
+          return false;
+        }
+      };
+
+      $rootScope.$on(UIEvents.BlockIPUpdate, function(event, ipPayload) {
+        var buttonDevice = this.GetDevice();
+        if (buttonDevice && buttonDevice.Options.block.Options.nodeId === ipPayload.nodeId) {
+          buttonDevice.Options.block.Options.server = ipPayload.server;
+          console.log("Button IP", ipPayload, this);
+        }
+        $rootScope.$apply();
+      }.bind(this));
 
       this.Construct();
     };

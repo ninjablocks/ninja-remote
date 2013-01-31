@@ -50,6 +50,7 @@ yeomanApp.service('Config'
 
             switch($location.$$host) {
                 case 'localhost':
+                case '127.0.0.1':
                     if ($location.$$port === 3501) {
                         platform = PLATFORMS.YEOMAN;
                     } else if ($location.$$port === 8000) {

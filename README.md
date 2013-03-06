@@ -10,6 +10,43 @@ Ninja Blocks Remote Webapp
 1. NINJA_CLIENT_ID - OAuth Client ID from https://a.ninja.is/hacking
 2. NINJA_CLIENT_SECRET - OAuth Client Secret from https://a.ninja.is/hacking
 
+## Installation
+```
+git clone https://github.com/ninjablocks/ninja-remote.git
+cd ninja-remote
+npm install
+```
+
+## Sample Development Setup
+### Step 1 - Ensure Redis is running
+```
+redis-server &
+```
+### Step 2 - Create a development Ninja App
+This can be done at https://a.ninja.is/hacking. 
+
+**Important**: Your callback URL will be http://localhost:8000/auth/ninjablocks
+
+The Client ID and Secret given will be used in Step 3.
+
+### Step 3 - Configure development environment
+```
+export NODE_ENV=development
+export NINJA_CLIENT_ID=[your client id]
+export NINJA_CLIENT_SECRET="[your client secret]"
+```
+
+### Step 4 - Run the instance
+```
+node app.js
+```
+
+### Step 5 - Visit the app in your browser
+```
+http://localhost:8000
+```
+
+
 ## Sample Heroku Install
 ### Step 1 - Create Heroku App
 ```
